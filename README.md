@@ -7,7 +7,7 @@ This repository is a monorepo for all backend (BE) and API services powering the
 - **minna-no-hologram-bff/**: Backend-for-Frontend (BFF) API for the end-user web/mobile app. Implements public-facing endpoints, OpenAPI spec, and business logic aggregation.
 - **(future)** End-User Side BE APIs: Core business logic and data APIs for end-user features, separated from the BFF.
 - **(future)** Operation Side APIs: Admin/operation APIs for internal tools, dashboards, and management.
-- **(future)** Recommender API: Service for personalized recommendations, ranking, and content suggestions.
+- **minna-no-hologram-recommend/**: Recommender API for personalized recommendations based on user watching history and current video ID. Implements a Small Language Model (SLM) for advanced recommendation logic.
 - **(future)** Video Processing Service: Handles video uploads, transcoding, thumbnail generation, and related media processing.
 - **...**: Additional backend services can be added as new folders.
 
