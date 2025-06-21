@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: hologram
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    com.betonamura.hologram: DEBUG
