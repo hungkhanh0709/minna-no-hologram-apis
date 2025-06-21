@@ -8,9 +8,18 @@ spring:
   output:
     ansi:
       enabled: detect # Auto-detect console capabilities
+  mvc:
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: true
+  web:
+    resources:
+      add-mappings: false
 
 server:
   port: 8080
+  error:
+    whitelabel:
+      enabled: false
 
 logging:
   level:

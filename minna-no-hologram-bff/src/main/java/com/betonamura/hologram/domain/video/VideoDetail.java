@@ -2,6 +2,8 @@ package com.betonamura.hologram.domain.video;
 
 import java.util.List;
 
+import com.betonamura.hologram.domain.category.Category;
+import com.betonamura.hologram.domain.qa.QAItem;
 import com.betonamura.hologram.domain.tag.Tag;
 
 import lombok.AllArgsConstructor;
@@ -13,12 +15,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Video {
+public class VideoDetail {
     private String id;
     private String slug;
     private String title;
-    private String thumbnail;
-    private String category;
+    private String videoUrl;
+    private Category category;
     private List<Tag> tags;
     private int likeCount;
+    private List<QAItem> qaContent;
+    private List<VideoCard> relatedVideos;
+    private String createdAt;
 }

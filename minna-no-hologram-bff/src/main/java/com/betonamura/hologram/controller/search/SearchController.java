@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.betonamura.hologram.config.ApiConfig;
 import com.betonamura.hologram.controller.ErrorResponse;
 import com.betonamura.hologram.domain.diy.Diy;
-import com.betonamura.hologram.domain.video.Video;
+import com.betonamura.hologram.domain.video.VideoCard;
 import com.betonamura.hologram.repository.diy.DiyRepository;
 import com.betonamura.hologram.repository.video.VideoRepository;
 
@@ -32,6 +32,14 @@ public class SearchController {
         this.diyRepository = diyRepository;
     }
 
+    /**
+     * Handles search requests for videos and DIYs.
+     *
+     * @param request       the search request containing parameters like keyword,
+     *                      offset, and limit
+     * @param bindingResult the result of validation on the request
+     * @return a ResponseEntity containing the search results or an error response
+     */
     @GetMapping(ApiConfig.SEARCH)
     public ResponseEntity<?> search(@Valid @ModelAttribute SearchRequest request, BindingResult bindingResult) {
 
@@ -45,7 +53,7 @@ public class SearchController {
         }
 
         // Search videos and DIYs
-        final List<Video> videos = videoRepository.search(request.getOffset(), request.getLimit(), request.getP());
+        final List<VideoCard> videos = videoRepository.search(request.getOffset(), request.getLimit(), request.getP());
         final List<Diy> diys = diyRepository.search(request.getOffset(), request.getLimit(), request.getP());
 
         final SearchResponse response = SearchResponseFactory.toSearchResponse(

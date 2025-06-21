@@ -10,6 +10,10 @@ import com.betonamura.hologram.domain.tag.Tag;
 @Repository
 public class DiyRepository {
 
+    public List<Diy> search(final int offset, final int limit) {
+        return search(offset, limit, null);
+    }
+
     /**
      * Searches for DIY projects based on the provided keyword, offset, and limit.
      * 

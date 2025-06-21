@@ -34,8 +34,12 @@
               }
             }
           },
-          "500": { "$ref": "#/components/responses/InternalError" },
-          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
         }
       }
     },
@@ -44,9 +48,15 @@
         "summary": "Search for content",
         "description": "Search for videos and DIY articles based on keyword. If no data is found, returns an empty results array.",
         "parameters": [
-          { "$ref": "#/components/parameters/SearchParam" },
-          { "$ref": "#/components/parameters/OffsetParam" },
-          { "$ref": "#/components/parameters/LimitParam" }
+          {
+            "$ref": "#/components/parameters/SearchParam"
+          },
+          {
+            "$ref": "#/components/parameters/OffsetParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
         ],
         "responses": {
           "200": {
@@ -59,20 +69,36 @@
               }
             }
           },
-          "500": { "$ref": "#/components/responses/InternalError" },
-          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
         }
       }
     },
-    "/categories": {
+    "/video": {
       "get": {
-        "summary": "Get categories and their content",
-        "description": "Returns a list of all categories if 'id' is blank. If 'id' is provided (comma-separated), returns videos and/or DIY articles in the specified categories. Use the 'type' parameter to filter by 'video' or 'diy'. If no data is found, returns an empty results array.",
+        "summary": "Get video categories and their videos",
+        "description": "Returns a list of all video categories and their associated videos. If no data is found, returns an empty array.",
         "parameters": [
-          { "$ref": "#/components/parameters/IdParam" },
-          { "$ref": "#/components/parameters/TypeParam" },
-          { "$ref": "#/components/parameters/OffsetParam" },
-          { "$ref": "#/components/parameters/LimitParam" }
+          {
+            "name": "categoryId",
+            "in": "query",
+            "description": "Category IDs (comma-separated, optional). Leave blank to get all categories.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "science,history"
+          },
+          {
+            "$ref": "#/components/parameters/OffsetParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
         ],
         "responses": {
           "200": {
@@ -80,13 +106,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CategoryResponse"
+                  "$ref": "#/components/schemas/VideoCategoriesResponse"
                 }
               }
             }
           },
-          "500": { "$ref": "#/components/responses/InternalError" },
-          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
         }
       }
     },
@@ -95,7 +125,9 @@
         "summary": "Get video details",
         "description": "Returns detailed information about a specific video. If not found, returns 404.",
         "parameters": [
-          { "$ref": "#/components/parameters/SlugIdParam" }
+          {
+            "$ref": "#/components/parameters/SlugIdParam"
+          }
         ],
         "responses": {
           "200": {
@@ -111,8 +143,44 @@
           "404": {
             "description": "Video not found."
           },
-          "500": { "$ref": "#/components/responses/InternalError" },
-          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
+        }
+      }
+    },
+    "/diy": {
+      "get": {
+        "summary": "Get DIY categories and their articles",
+        "description": "Returns a list of all DIY categories and their associated DIY articles. If no data is found, returns an empty array.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OffsetParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response. If no data is found, results will be an empty array.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DIYCategoriesResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
         }
       }
     },
@@ -121,7 +189,9 @@
         "summary": "Get DIY article details",
         "description": "Returns detailed information about a specific DIY article. If not found, returns 404.",
         "parameters": [
-          { "$ref": "#/components/parameters/SlugIdParam" }
+          {
+            "$ref": "#/components/parameters/SlugIdParam"
+          }
         ],
         "responses": {
           "200": {
@@ -137,8 +207,12 @@
           "404": {
             "description": "DIY article not found."
           },
-          "500": { "$ref": "#/components/responses/InternalError" },
-          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
         }
       }
     },
@@ -187,8 +261,12 @@
           "404": {
             "description": "Content not found"
           },
-          "500": { "$ref": "#/components/responses/InternalError" },
-          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
+          "503": {
+            "$ref": "#/components/responses/ServiceUnavailable"
+          }
         }
       }
     }
@@ -225,7 +303,10 @@
         "required": false,
         "schema": {
           "type": "string",
-          "enum": ["video", "diy"],
+          "enum": [
+            "video",
+            "diy"
+          ],
           "default": ""
         }
       },
@@ -384,7 +465,11 @@
           },
           "difficulty": {
             "type": "string",
-            "enum": ["easy", "medium", "hard"],
+            "enum": [
+              "easy",
+              "medium",
+              "hard"
+            ],
             "description": "Difficulty level of the DIY project",
             "example": "easy"
           },
@@ -407,14 +492,21 @@
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["video", "diy"],
+            "enum": [
+              "video",
+              "diy"
+            ],
             "description": "Type of content",
             "example": "video"
           },
           "content": {
             "oneOf": [
-              { "$ref": "#/components/schemas/VideoCard" },
-              { "$ref": "#/components/schemas/DIYCard" }
+              {
+                "$ref": "#/components/schemas/VideoCard"
+              },
+              {
+                "$ref": "#/components/schemas/DIYCard"
+              }
             ]
           }
         }
@@ -465,7 +557,10 @@
                 "thumbnail": "https://example.com/thumbnails/quantum-physics.jpg",
                 "category": "science",
                 "tags": [
-                  { "id": "physics", "name": "Physics" }
+                  {
+                    "id": "physics",
+                    "name": "Physics"
+                  }
                 ],
                 "likeCount": 1250
               }
@@ -482,7 +577,10 @@
                 "estimatedTime": "10-15 min",
                 "difficulty": "easy",
                 "tags": [
-                  { "id": "maker", "name": "Maker" }
+                  {
+                    "id": "maker",
+                    "name": "Maker"
+                  }
                 ],
                 "likeCount": 750
               }
@@ -496,33 +594,29 @@
           }
         }
       },
-      "CategoriesResponse": {
+      "VideoCategoriesResponse": {
         "type": "object",
         "properties": {
-          "categories": {
+          "results": {
             "type": "array",
-            "description": "List of categories",
+            "description": "Videos in the requested categories",
             "items": {
-              "$ref": "#/components/schemas/Category"
+              "$ref": "#/components/schemas/VideoCard"
             }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
           }
         }
       },
-      "CategoryResponse": {
+      "DIYCategoriesResponse": {
         "type": "object",
         "properties": {
-          "categories": {
-            "type": "array",
-            "description": "List of requested categories",
-            "items": {
-              "$ref": "#/components/schemas/Category"
-            }
-          },
           "results": {
             "type": "array",
-            "description": "Category content",
+            "description": "DIY articles in the requested categories",
             "items": {
-              "$ref": "#/components/schemas/ContentItem"
+              "$ref": "#/components/schemas/DIYCard"
             }
           },
           "pagination": {
@@ -715,7 +809,11 @@
           },
           "difficulty": {
             "type": "string",
-            "enum": ["easy", "medium", "hard"],
+            "enum": [
+              "easy",
+              "medium",
+              "hard"
+            ],
             "description": "Difficulty level of the DIY project",
             "example": "easy"
           },
@@ -762,11 +860,17 @@
       },
       "LikeRequest": {
         "type": "object",
-        "required": ["type", "id"],
+        "required": [
+          "type",
+          "id"
+        ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["video", "diy"],
+            "enum": [
+              "video",
+              "diy"
+            ],
             "description": "Type of content to like",
             "example": "video"
           },
