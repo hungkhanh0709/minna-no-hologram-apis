@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Diy {
+public class DiyCard {
     private String id;
     private String slug;
     private String title;

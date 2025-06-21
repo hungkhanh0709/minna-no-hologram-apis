@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.betonamura.hologram.config.ApiConfig;
 import com.betonamura.hologram.controller.ErrorResponse;
-import com.betonamura.hologram.domain.diy.Diy;
+import com.betonamura.hologram.domain.diy.DiyCard;
 import com.betonamura.hologram.domain.video.VideoCard;
 import com.betonamura.hologram.repository.diy.DiyRepository;
 import com.betonamura.hologram.repository.video.VideoRepository;
@@ -54,7 +54,7 @@ public class SearchController {
 
         // Search videos and DIYs
         final List<VideoCard> videos = videoRepository.search(request.getOffset(), request.getLimit(), request.getP());
-        final List<Diy> diys = diyRepository.search(request.getOffset(), request.getLimit(), request.getP());
+        final List<DiyCard> diys = diyRepository.search(request.getOffset(), request.getLimit(), request.getP());
 
         final SearchResponse response = SearchResponseFactory.toSearchResponse(
                 request.getOffset(), request.getLimit(), request.getP(),

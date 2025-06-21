@@ -1,4 +1,4 @@
-package com.betonamura.hologram.domain.qa;
+package com.betonamura.hologram.domain.diy;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QAItem {
-    private String question;
-    private String answer;
+public class Material {
+    private String name;
+    private boolean optional;
 }

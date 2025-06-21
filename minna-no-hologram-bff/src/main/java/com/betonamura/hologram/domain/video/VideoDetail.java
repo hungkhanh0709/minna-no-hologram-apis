@@ -3,7 +3,6 @@ package com.betonamura.hologram.domain.video;
 import java.util.List;
 
 import com.betonamura.hologram.domain.category.Category;
-import com.betonamura.hologram.domain.qa.QAItem;
 import com.betonamura.hologram.domain.tag.Tag;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +22,7 @@ public class VideoDetail {
     private Category category;
     private List<Tag> tags;
     private int likeCount;
-    private List<QAItem> qaContent;
+    private List<VideoQAItem> qaContent;
     private List<VideoCard> relatedVideos;
     private String createdAt;
 }

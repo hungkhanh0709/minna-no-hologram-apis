@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betonamura.hologram.config.ApiConfig;
@@ -32,7 +31,7 @@ public class VideoController {
         this.videoResponseFactory = videoResponseFactory;
     }
 
-    @GetMapping(ApiConfig.VIDEO)
+    @GetMapping(ApiConfig.VIDEO_SEARCH)
     public ResponseEntity<?> search(@Valid @ModelAttribute VideosRequest request, BindingResult bindingResult) {
         // Validate the request parameters
         if (bindingResult.hasErrors()) {
@@ -55,7 +54,16 @@ public class VideoController {
     }
 
     @GetMapping(ApiConfig.VIDEO_DETAIL)
-    public ResponseEntity<?> getVideoDetail(@PathVariable String slugId) {
+    public ResponseEntity<?> getVideoDetail(@Valid @ModelAttribute VideoDetailRequest request,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            String message = bindingResult.getAllErrors().stream()
+                    .map(error -> error.getDefaultMessage())
+                    .findFirst().orElse("Validation failed");
+            ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), message);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+        String slugId = request.getSlugId();
         final VideoDetail video = videoRepository.getVideoDetail(slugId);
         if (video == null) {
             ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.NOT_FOUND.value()),

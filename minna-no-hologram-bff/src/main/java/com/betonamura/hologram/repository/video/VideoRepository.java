@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.betonamura.hologram.domain.category.Category;
-import com.betonamura.hologram.domain.qa.QAItem;
 import com.betonamura.hologram.domain.tag.Tag;
 import com.betonamura.hologram.domain.video.VideoCard;
 import com.betonamura.hologram.domain.video.VideoDetail;
+import com.betonamura.hologram.domain.video.VideoQAItem;
 
 @Repository
 public class VideoRepository {
@@ -74,24 +74,24 @@ public class VideoRepository {
                 return List.of(Tag.builder().id("physics").name("Physics").build());
         }
 
-        private List<QAItem> buildQAContent() {
+        private List<VideoQAItem> buildQAContent() {
                 // Create dummy QA content for the video
-                final QAItem qaItem1 = QAItem.builder()
+                final VideoQAItem qaItem1 = VideoQAItem.builder()
                                 .question("What is quantum physics?")
                                 .answer("Quantum physics is the branch of physics that deals with the behavior of matter and light on the atomic and subatomic scale.")
                                 .build();
 
-                final QAItem qaItem2 = QAItem.builder()
+                final VideoQAItem qaItem2 = VideoQAItem.builder()
                                 .question("How do holograms work?")
                                 .answer("Holograms are created by recording light patterns reflected from an object, allowing 3D images to be viewed from different angles.")
                                 .build();
 
-                final QAItem qaItem3 = QAItem.builder()
+                final VideoQAItem qaItem3 = VideoQAItem.builder()
                                 .question("What are some applications of holograms?")
                                 .answer("Holograms are used in various fields including data storage, security, and medical imaging.")
                                 .build();
 
-                final QAItem qaItem4 = QAItem.builder()
+                final VideoQAItem qaItem4 = VideoQAItem.builder()
                                 .question("Can holograms be used in education?")
                                 .answer("Yes, holograms can enhance learning experiences by providing interactive 3D visualizations.")
                                 .build();

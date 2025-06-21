@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betonamura.hologram.config.ApiConfig;
-import com.betonamura.hologram.domain.diy.Diy;
+import com.betonamura.hologram.domain.diy.DiyCard;
 import com.betonamura.hologram.domain.video.VideoCard;
 import com.betonamura.hologram.repository.diy.DiyRepository;
 import com.betonamura.hologram.repository.video.VideoRepository;
@@ -34,7 +34,7 @@ public class HomeController {
     public ResponseEntity<HomeResponse> getHome() {
         // Use repository to get data with default offset/limit
         final List<VideoCard> videos = videoRepository.search(0, 5);
-        final List<Diy> diys = diyRepository.search(0, 1);
+        final List<DiyCard> diys = diyRepository.search(0, 1);
         final HomeResponse response = HomeResponse.builder()
                 .recentVideos(videos)
                 .recentDIY(diys.isEmpty() ? null : diys.get(0))
