@@ -3,10 +3,13 @@ package com.betonamura.hologram.controller.search;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.betonamura.hologram.controller.Pagination;
 import com.betonamura.hologram.domain.diy.Diy;
-import com.betonamura.hologram.domain.video.Video;
+import com.betonamura.hologram.domain.video.VideoCard;
 
+@Component
 public class SearchResponseFactory {
 
     private static final String TYPE_VIDEO = "video";
@@ -17,9 +20,9 @@ public class SearchResponseFactory {
      * each representing either a Video or a Diy
      */
     public static SearchResponse toSearchResponse(final int offset, final int limit, final String query,
-            final List<Video> videos, final List<Diy> diys) {
+            final List<VideoCard> videos, final List<Diy> diys) {
         final List<SearchResponse.ContentItem> results = new ArrayList<>();
-        for (Video v : videos) {
+        for (VideoCard v : videos) {
             results.add(SearchResponse.ContentItem.builder().type(TYPE_VIDEO).content(v).build());
         }
         for (Diy d : diys) {
