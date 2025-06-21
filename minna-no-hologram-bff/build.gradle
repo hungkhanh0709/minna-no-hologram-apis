@@ -42,6 +42,16 @@ tasks.named('test') {
 	finalizedBy jacocoTestReport // generate report after tests
 }
 
+bootJar {
+    mainClass = 'com.betonamura.hologram.BffApplication'
+}
+
+bootRun {
+    // Basic configuration - settings are in application.yml
+}
+
+// Main build tasks and configurations are defined above
+
 jacocoTestReport {
     dependsOn test
     reports {

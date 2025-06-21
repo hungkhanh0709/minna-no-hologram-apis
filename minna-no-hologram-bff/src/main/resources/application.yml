@@ -5,6 +5,9 @@ spring:
     user:
       name: admin
       password: admin
+  output:
+    ansi:
+      enabled: detect # Auto-detect console capabilities
 
 server:
   port: 8080
@@ -13,4 +16,9 @@ logging:
   level:
     root: INFO
     org.springframework: INFO
-    com.betonamura.hologram: DEBUG
+    com.betonamura.hologram: INFO
+  file:
+    name: logs/application.log
+  pattern:
+    console: "%clr(%d{HH:mm:ss}){blue} %clr(%-5p) %clr([%logger{0}]){cyan} %m%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [${spring.application.name}] [%thread] %-5level %logger{36} - %msg%n"
