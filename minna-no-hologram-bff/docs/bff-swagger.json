@@ -1,0 +1,792 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Minna No Hologram BFF API",
+    "description": "Backend For Frontend API for the Minna No Hologram platform",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.bff-hologram.example/v1",
+      "description": "Production server"
+    },
+    {
+      "url": "https://staging-api.bff-hologram.example/v1",
+      "description": "Staging server"
+    }
+  ],
+  "paths": {
+    "/home": {
+      "get": {
+        "summary": "Get home page content",
+        "description": "Returns recent videos and recent DIY article for the home page. If no data is found, returns empty arrays or null objects.",
+        "responses": {
+          "200": {
+            "description": "Successful response. If no data is found, results will be empty.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomeResponse"
+                }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "summary": "Search for content",
+        "description": "Search for videos and DIY articles based on keyword. If no data is found, returns an empty results array.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SearchParam" },
+          { "$ref": "#/components/parameters/OffsetParam" },
+          { "$ref": "#/components/parameters/LimitParam" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response. If no data is found, results will be an empty array.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "summary": "Get categories and their content",
+        "description": "Returns a list of all categories if 'id' is blank. If 'id' is provided (comma-separated), returns videos and/or DIY articles in the specified categories. Use the 'type' parameter to filter by 'video' or 'diy'. If no data is found, returns an empty results array.",
+        "parameters": [
+          { "$ref": "#/components/parameters/IdParam" },
+          { "$ref": "#/components/parameters/TypeParam" },
+          { "$ref": "#/components/parameters/OffsetParam" },
+          { "$ref": "#/components/parameters/LimitParam" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response. If no data is found, results will be an empty array.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryResponse"
+                }
+              }
+            }
+          },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/video/{slugId}": {
+      "get": {
+        "summary": "Get video details",
+        "description": "Returns detailed information about a specific video. If not found, returns 404.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SlugIdParam" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoDetailResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Video not found."
+          },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/diy/{slugId}": {
+      "get": {
+        "summary": "Get DIY article details",
+        "description": "Returns detailed information about a specific DIY article. If not found, returns 404.",
+        "parameters": [
+          { "$ref": "#/components/parameters/SlugIdParam" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DIYDetailResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "DIY article not found."
+          },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    },
+    "/like": {
+      "post": {
+        "summary": "Like content",
+        "description": "Like a video or DIY article. The backend uses a browser cookie or client ID to prevent multiple likes from the same browser. Returns 409 if already liked.",
+        "parameters": [
+          {
+            "name": "X-Client-Id",
+            "in": "header",
+            "description": "A unique identifier for the browser/client (optional if using cookies).",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LikeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Like successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LikeResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Already liked from this browser"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Content not found"
+          },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "503": { "$ref": "#/components/responses/ServiceUnavailable" }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OffsetParam": {
+        "name": "offset",
+        "in": "query",
+        "description": "Number of items to skip before starting to collect the result set.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0
+        }
+      },
+      "LimitParam": {
+        "name": "limit",
+        "in": "query",
+        "description": "Number of items to return.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 50
+        }
+      },
+      "TypeParam": {
+        "name": "type",
+        "in": "query",
+        "description": "Content type to filter by. Use 'video' to get only videos, 'diy' to get only DIY articles, or leave blank to get both.",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": ["video", "diy"],
+          "default": ""
+        }
+      },
+      "IdParam": {
+        "name": "id",
+        "in": "query",
+        "description": "Category IDs (comma-separated, optional). Leave blank to get all categories.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "example": "science,history"
+      },
+      "SearchParam": {
+        "name": "p",
+        "in": "query",
+        "description": "Search keyword",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "SlugIdParam": {
+        "name": "slugId",
+        "in": "path",
+        "description": "Slug ID of the resource",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "InternalError": {
+        "description": "Internal server error"
+      },
+      "ServiceUnavailable": {
+        "description": "Service unavailable"
+      }
+    },
+    "schemas": {
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the category",
+            "example": "science"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the category",
+            "example": "Science"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of the category",
+            "example": "Scientific topics and discoveries"
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the tag",
+            "example": "physics"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the tag",
+            "example": "Physics"
+          }
+        }
+      },
+      "VideoCard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the video",
+            "example": "123"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier for the video",
+            "example": "quantum-physics-explained"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the video",
+            "example": "Quantum Physics Explained with Holograms"
+          },
+          "thumbnail": {
+            "type": "string",
+            "description": "URL of the video thumbnail",
+            "example": "https://example.com/thumbnails/quantum-physics.jpg"
+          },
+          "category": {
+            "type": "string",
+            "description": "Primary category of the video",
+            "example": "science"
+          },
+          "tags": {
+            "type": "array",
+            "description": "List of tags for the video",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "Number of likes for the video",
+            "example": 1250
+          }
+        }
+      },
+      "DIYCard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the DIY article",
+            "example": "456"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier for the DIY article",
+            "example": "build-pyramid-hologram-projector"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the DIY article",
+            "example": "Build Your Own Pyramid Hologram Projector"
+          },
+          "thumbnail": {
+            "type": "string",
+            "description": "URL of the DIY article thumbnail",
+            "example": "https://example.com/thumbnails/pyramid-hologram.jpg"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Brief summary of the DIY article",
+            "example": "Learn how to build a simple pyramid hologram projector using household materials."
+          },
+          "stepCount": {
+            "type": "integer",
+            "description": "Number of steps in the DIY article",
+            "example": 5
+          },
+          "estimatedTime": {
+            "type": "string",
+            "description": "Estimated time to complete the DIY project",
+            "example": "10-15 min"
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": ["easy", "medium", "hard"],
+            "description": "Difficulty level of the DIY project",
+            "example": "easy"
+          },
+          "tags": {
+            "type": "array",
+            "description": "List of tags for the DIY article",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "Number of likes for the DIY article",
+            "example": 750
+          }
+        }
+      },
+      "ContentItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["video", "diy"],
+            "description": "Type of content",
+            "example": "video"
+          },
+          "content": {
+            "oneOf": [
+              { "$ref": "#/components/schemas/VideoCard" },
+              { "$ref": "#/components/schemas/DIYCard" }
+            ]
+          }
+        }
+      },
+      "HomeResponse": {
+        "type": "object",
+        "properties": {
+          "recentVideos": {
+            "type": "array",
+            "description": "List of recent videos (first video is the hero video)",
+            "items": {
+              "$ref": "#/components/schemas/VideoCard"
+            }
+          },
+          "recentDIY": {
+            "$ref": "#/components/schemas/DIYCard"
+          }
+        }
+      },
+      "SearchResponse": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query",
+            "example": "hologram"
+          },
+          "results": {
+            "type": "array",
+            "description": "Search results",
+            "items": {
+              "$ref": "#/components/schemas/ContentItem"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        },
+        "example": {
+          "query": "hologram",
+          "results": [
+            {
+              "type": "video",
+              "content": {
+                "id": "123",
+                "slug": "quantum-physics-explained",
+                "title": "Quantum Physics Explained with Holograms",
+                "thumbnail": "https://example.com/thumbnails/quantum-physics.jpg",
+                "category": "science",
+                "tags": [
+                  { "id": "physics", "name": "Physics" }
+                ],
+                "likeCount": 1250
+              }
+            },
+            {
+              "type": "diy",
+              "content": {
+                "id": "456",
+                "slug": "build-pyramid-hologram-projector",
+                "title": "Build Your Own Pyramid Hologram Projector",
+                "thumbnail": "https://example.com/thumbnails/pyramid-hologram.jpg",
+                "summary": "Learn how to build a simple pyramid hologram projector using household materials.",
+                "stepCount": 5,
+                "estimatedTime": "10-15 min",
+                "difficulty": "easy",
+                "tags": [
+                  { "id": "maker", "name": "Maker" }
+                ],
+                "likeCount": 750
+              }
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "pageSize": 10,
+            "totalItems": 2,
+            "totalPages": 1
+          }
+        }
+      },
+      "CategoriesResponse": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "description": "List of categories",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        }
+      },
+      "CategoryResponse": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "description": "List of requested categories",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "results": {
+            "type": "array",
+            "description": "Category content",
+            "items": {
+              "$ref": "#/components/schemas/ContentItem"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "description": "Current page number",
+            "example": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "Number of items per page",
+            "example": 10
+          },
+          "totalItems": {
+            "type": "integer",
+            "description": "Total number of items",
+            "example": 100
+          },
+          "totalPages": {
+            "type": "integer",
+            "description": "Total number of pages",
+            "example": 10
+          }
+        }
+      },
+      "QAItem": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "Question about the video content",
+            "example": "What is quantum entanglement?"
+          },
+          "answer": {
+            "type": "string",
+            "description": "Expert answer to the question",
+            "example": "Quantum entanglement is a phenomenon where two particles become linked and the quantum state of each particle cannot be described independently of the state of the others."
+          }
+        }
+      },
+      "VideoDetailResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the video",
+            "example": "123"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier for the video",
+            "example": "quantum-physics-explained"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the video",
+            "example": "Quantum Physics Explained with Holograms"
+          },
+          "videoUrl": {
+            "type": "string",
+            "description": "URL of the video",
+            "example": "https://example.com/videos/quantum-physics.mp4"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "tags": {
+            "type": "array",
+            "description": "List of tags for the video",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "Number of likes for the video",
+            "example": 1250
+          },
+          "qaContent": {
+            "type": "array",
+            "description": "Q&A content for the video",
+            "items": {
+              "$ref": "#/components/schemas/QAItem"
+            }
+          },
+          "relatedVideos": {
+            "type": "array",
+            "description": "Related videos from the recommender API",
+            "items": {
+              "$ref": "#/components/schemas/VideoCard"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the video was created",
+            "example": "2023-06-15T10:30:00Z"
+          }
+        }
+      },
+      "DIYStep": {
+        "type": "object",
+        "properties": {
+          "stepNumber": {
+            "type": "integer",
+            "description": "Step number",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Step title",
+            "example": "Gather Materials"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "URL of the step image",
+            "example": "https://example.com/images/diy/step1.jpg"
+          },
+          "caption": {
+            "type": "string",
+            "description": "Caption for the image",
+            "example": "Materials needed for the hologram projector"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the step",
+            "example": "Start by gathering all the materials you'll need: clear plastic sheet, scissors, ruler, and marker."
+          }
+        }
+      },
+      "Material": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the material",
+            "example": "Clear plastic sheet"
+          },
+          "optional": {
+            "type": "boolean",
+            "description": "Whether the material is optional",
+            "example": false
+          }
+        }
+      },
+      "DIYDetailResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the DIY article",
+            "example": "456"
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly identifier for the DIY article",
+            "example": "build-pyramid-hologram-projector"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the DIY article",
+            "example": "Build Your Own Pyramid Hologram Projector"
+          },
+          "videoUrl": {
+            "type": "string",
+            "description": "URL of the tutorial video",
+            "example": "https://example.com/videos/pyramid-tutorial.mp4"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Brief summary of the DIY article",
+            "example": "Learn how to build a simple pyramid hologram projector using household materials."
+          },
+          "stepCount": {
+            "type": "integer",
+            "description": "Number of steps in the DIY article",
+            "example": 5
+          },
+          "estimatedTime": {
+            "type": "string",
+            "description": "Estimated time to complete the DIY project",
+            "example": "10-15 min"
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": ["easy", "medium", "hard"],
+            "description": "Difficulty level of the DIY project",
+            "example": "easy"
+          },
+          "tags": {
+            "type": "array",
+            "description": "List of tags for the DIY article",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "likeCount": {
+            "type": "integer",
+            "description": "Number of likes for the DIY article",
+            "example": 750
+          },
+          "materials": {
+            "type": "array",
+            "description": "List of materials needed for the DIY project",
+            "items": {
+              "$ref": "#/components/schemas/Material"
+            }
+          },
+          "steps": {
+            "type": "array",
+            "description": "Step-by-step instructions",
+            "items": {
+              "$ref": "#/components/schemas/DIYStep"
+            }
+          },
+          "relatedDIY": {
+            "type": "array",
+            "description": "Related DIY articles from the recommender API",
+            "items": {
+              "$ref": "#/components/schemas/DIYCard"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the DIY article was created",
+            "example": "2023-06-20T14:45:00Z"
+          }
+        }
+      },
+      "LikeRequest": {
+        "type": "object",
+        "required": ["type", "id"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["video", "diy"],
+            "description": "Type of content to like",
+            "example": "video"
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of the content to like",
+            "example": "123"
+          }
+        }
+      },
+      "LikeResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Whether the like was successful",
+            "example": true
+          }
+        }
+      }
+    }
+  }
+}
