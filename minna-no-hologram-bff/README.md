@@ -25,6 +25,12 @@ This project is the Backend For Frontend (BFF) API for the Minna No Hologram pla
 
 ### Running the Application
 
+First, make sure you are in the `minna-no-hologram-bff` directory:
+
+```sh
+cd minna-no-hologram-bff
+```
+
 You can run the application using Gradle. If you have the Gradle wrapper (recommended), use:
 
 ```sh
@@ -41,10 +47,22 @@ The API will be available at `http://localhost:8080` by default.
 
 ### Running Tests and Viewing Code Coverage
 
+First, make sure you are in the `minna-no-hologram-bff` directory:
+
+```sh
+cd minna-no-hologram-bff
+```
+
 To run tests and generate a Jacoco code coverage report:
 
 ```sh
 gradle test jacocoTestReport
+```
+
+or
+
+```sh
+./gradlew test jacocoTestReport
 ```
 
 The HTML report will be available at `build/reports/jacoco/test/html/index.html`.

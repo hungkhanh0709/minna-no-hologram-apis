@@ -2,6 +2,8 @@ package com.betonamura.hologram.controller.home;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import com.betonamura.hologram.repository.video.VideoRepository;
 
 @RestController
 public class HomeController {
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
     private final VideoRepository videoRepository;
     private final DiyRepository diyRepository;
 
@@ -33,8 +37,8 @@ public class HomeController {
     @GetMapping(ApiConfig.HOME)
     public ResponseEntity<HomeResponse> getHome() {
         // Use repository to get data with default offset/limit
-        final List<Video> videos = videoRepository.search(0, 5);
-        final List<Diy> diys = diyRepository.search(0, 1);
+        final List<Video> videos = videoRepository.search(0, 5, null);
+        final List<Diy> diys = diyRepository.search(0, 1, null);
         final HomeResponse response = HomeResponse.builder()
                 .recentVideos(videos)
                 .recentDIY(diys.isEmpty() ? null : diys.get(0))

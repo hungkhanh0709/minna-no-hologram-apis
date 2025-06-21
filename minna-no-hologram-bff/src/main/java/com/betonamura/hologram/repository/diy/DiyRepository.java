@@ -18,7 +18,7 @@ public class DiyRepository {
      * @param keyword The search keyword (not used in this dummy implementation).
      * @return A list of DIY projects matching the search criteria.
      */
-    public List<Diy> search(final int offset, final int limit) {
+    public List<Diy> search(final int offset, final int limit, final String query) {
         // Tag
         final Tag makerTag = Tag.builder().id("maker").name("Maker").build();
         final List<Tag> tags = List.of(makerTag);
@@ -39,6 +39,12 @@ public class DiyRepository {
 
         // Simulate a search with offset and limit
         List<Diy> all = List.of(diy);
+        // Filter by query if present
+        if (query != null && !query.isBlank()) {
+            all = all.stream()
+                    .filter(d -> d.getTitle() != null && d.getTitle().toLowerCase().contains(query.toLowerCase()))
+                    .toList();
+        }
         int from = Math.max(0, offset);
         int to = Math.min(all.size(), from + Math.max(1, Math.min(limit, 50)));
         return all.subList(from, to);
