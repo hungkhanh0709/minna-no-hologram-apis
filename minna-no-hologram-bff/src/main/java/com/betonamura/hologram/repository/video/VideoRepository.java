@@ -9,7 +9,7 @@ import com.betonamura.hologram.domain.video.VideoCard;
 
 @Repository
 public class VideoRepository {
-    public List<VideoCard> search(int offset, int limit, String keyword, String category, List<Tag> tags) {
+    public List<VideoCard> search(final int offset, final int limit, final String keyword, final String category, final List<Tag> tags) {
         // Return 5 dummy videos for home page, support offset/limit
         Tag physicsTag = Tag.builder().id("physics").name("Physics").build();
         Tag makerTag = Tag.builder().id("maker").name("Maker").build();
@@ -60,6 +60,7 @@ public class VideoRepository {
                 .likeCount(540)
                 .build()
         );
+        // Apply offset and limit
         int from = Math.max(0, offset);
         int to = Math.min(all.size(), from + Math.max(1, Math.min(limit, 50)));
         return all.subList(from, to);

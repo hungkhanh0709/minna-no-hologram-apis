@@ -9,7 +9,7 @@ import com.betonamura.hologram.domain.diy.DIYCard;
 
 @Repository
 public class DiyRepository {
-    public List<DIYCard> search(int offset, int limit, String keyword, List<Tag> tags) {
+    public List<DIYCard> search(final int offset, final int limit, final String keyword, final List<Tag> tags) {
         // Return 1 dummy DIY for home page, support offset/limit
         DIYCard diy = DIYCard.builder()
                 .id("456")
@@ -23,6 +23,8 @@ public class DiyRepository {
                 .tags(List.of(Tag.builder().id("maker").name("Maker").build()))
                 .likeCount(750)
                 .build();
+
+        // Simulate a search with offset and limit
         List<DIYCard> all = List.of(diy);
         int from = Math.max(0, offset);
         int to = Math.min(all.size(), from + Math.max(1, Math.min(limit, 50)));
