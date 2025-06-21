@@ -1,20 +1,44 @@
 package com.betonamura.hologram.repository.video;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.betonamura.hologram.domain.Tag;
-import com.betonamura.hologram.domain.video.VideoCard;
+import com.betonamura.hologram.domain.tag.Tag;
+import com.betonamura.hologram.domain.video.Video;
 
 @Repository
 public class VideoRepository {
-    public List<VideoCard> search(final int offset, final int limit, final String keyword, final String category, final List<Tag> tags) {
+
+    /**
+     * Search for videos with pagination support.
+     * 
+     * @param offset The starting index for pagination
+     * @param limit  The maximum number of videos to return
+     * @return List of Video objects representing the search results
+     */
+    public List<Video> search(final int offset, final int limit) {
+        // Dummy implementation for search functionality
+        List<Video> videos = this.getVideos();
+
+        // Apply offset and limit
+        int from = Math.max(0, offset);
+        int to = Math.min(videos.size(), from + Math.max(1, Math.min(limit, 50)));
+        return videos.subList(from, to);
+    }
+
+    /**
+     * Get a list of dummy videos for the home page.
+     * 
+     * @return List of VideoCard objects representing recent videos
+     */
+    private List<Video> getVideos() {
         // Return 5 dummy videos for home page, support offset/limit
         Tag physicsTag = Tag.builder().id("physics").name("Physics").build();
         Tag makerTag = Tag.builder().id("maker").name("Maker").build();
-        List<VideoCard> all = List.of(
-            VideoCard.builder()
+
+        final Video video1 = Video.builder()
                 .id("123")
                 .slug("quantum-physics-explained")
                 .title("Quantum Physics Explained with Holograms")
@@ -22,17 +46,19 @@ public class VideoRepository {
                 .category("science")
                 .tags(List.of(physicsTag))
                 .likeCount(1250)
-                .build(),
-            VideoCard.builder()
-                .id("124")
-                .slug("hologram-history")
-                .title("The History of Holograms")
-                .thumbnail("https://images.unsplash.com/photo-1519125323398-675f0ddb6308")
-                .category("history")
-                .tags(List.of(makerTag))
-                .likeCount(980)
-                .build(),
-            VideoCard.builder()
+                .build();
+
+        Video video2 = Video.builder()
+                .id("128")
+                .slug("hologram-technology-in-education")
+                .title("Hologram Technology in Education")
+                .thumbnail("https://images.unsplash.com/photo-1506748686214-e9df14d4d9f3")
+                .category("education")
+                .tags(List.of(physicsTag, makerTag))
+                .likeCount(1100)
+                .build();
+
+        Video video3 = Video.builder()
                 .id("125")
                 .slug("diy-hologram-projects")
                 .title("Top 5 DIY Hologram Projects")
@@ -40,8 +66,9 @@ public class VideoRepository {
                 .category("maker")
                 .tags(List.of(makerTag))
                 .likeCount(870)
-                .build(),
-            VideoCard.builder()
+                .build();
+
+        Video video4 = Video.builder()
                 .id("126")
                 .slug("hologram-in-pop-culture")
                 .title("Holograms in Pop Culture")
@@ -49,8 +76,9 @@ public class VideoRepository {
                 .category("entertainment")
                 .tags(List.of(physicsTag, makerTag))
                 .likeCount(650)
-                .build(),
-            VideoCard.builder()
+                .build();
+
+        Video video5 = Video.builder()
                 .id("127")
                 .slug("future-of-holograms")
                 .title("The Future of Hologram Technology")
@@ -58,11 +86,16 @@ public class VideoRepository {
                 .category("technology")
                 .tags(List.of(physicsTag))
                 .likeCount(540)
-                .build()
-        );
-        // Apply offset and limit
-        int from = Math.max(0, offset);
-        int to = Math.min(all.size(), from + Math.max(1, Math.min(limit, 50)));
-        return all.subList(from, to);
+                .build();
+
+        // Simulate a search with offset and limit
+        List<Video> videos = new ArrayList<>();
+        videos.add(video1);
+        videos.add(video2);
+        videos.add(video3);
+        videos.add(video4);
+        videos.add(video5);
+
+        return videos;
     }
 }

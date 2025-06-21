@@ -1,18 +1,19 @@
 package com.betonamura.hologram.domain.diy;
 
-import com.betonamura.hologram.domain.Tag;
+import java.util.List;
+
+import com.betonamura.hologram.domain.tag.Tag;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DIYCard {
+public class Diy {
     private String id;
     private String slug;
     private String title;
@@ -22,5 +23,5 @@ public class DIYCard {
     private String estimatedTime;
     private String difficulty;
     private List<Tag> tags;
-    private Integer likeCount;
+    private int likeCount;
 }

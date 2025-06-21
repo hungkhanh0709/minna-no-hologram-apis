@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betonamura.hologram.config.ApiConfig;
-import com.betonamura.hologram.domain.diy.DIYCard;
-import com.betonamura.hologram.domain.video.VideoCard;
+import com.betonamura.hologram.domain.diy.Diy;
+import com.betonamura.hologram.domain.video.Video;
 import com.betonamura.hologram.repository.diy.DiyRepository;
 import com.betonamura.hologram.repository.video.VideoRepository;
 
@@ -25,13 +25,7 @@ public class HomeController {
     }
 
     /**
-     * Home API endpoint.
-     * <p>
      * Returns a summary for the home page, including:
-     * <ul>
-     *   <li>5 recent videos (with real, free-license images)</li>
-     *   <li>1 recent DIY article</li>
-     * </ul>
      * Data is fetched from repositories with default offset/limit values.
      *
      * @return HomeResponse containing recent videos and a DIY article
@@ -39,8 +33,8 @@ public class HomeController {
     @GetMapping(ApiConfig.HOME)
     public ResponseEntity<HomeResponse> getHome() {
         // Use repository to get data with default offset/limit
-        final List<VideoCard> videos = videoRepository.search(0, 5, null, null, null);
-        final List<DIYCard> diys = diyRepository.search(0, 1, null, null);
+        final List<Video> videos = videoRepository.search(0, 5);
+        final List<Diy> diys = diyRepository.search(0, 1);
         final HomeResponse response = HomeResponse.builder()
                 .recentVideos(videos)
                 .recentDIY(diys.isEmpty() ? null : diys.get(0))

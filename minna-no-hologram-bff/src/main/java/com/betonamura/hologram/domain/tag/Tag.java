@@ -1,4 +1,4 @@
-package com.betonamura.hologram.domain;
+package com.betonamura.hologram.domain.tag;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
