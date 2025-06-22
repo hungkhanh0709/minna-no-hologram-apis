@@ -18,6 +18,7 @@ public class VideoDetail {
     private String id;
     private String slug;
     private String title;
+    private String thumbnail;
     private String videoUrl;
     private Category category;
     private List<Tag> tags;

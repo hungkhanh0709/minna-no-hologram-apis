@@ -15,6 +15,10 @@ import com.betonamura.hologram.repository.video.VideoRepository;
 
 @RestController
 public class HomeController {
+    private static final int DEFAULT_OFFSET = 0; // Default offset for pagination
+    private static final int DEFAULT_DIY_LIMIT = 1; // Default number of DIY articles
+    private static final int DEFAULT_VIDEO_LIMIT = 5; // Default number of videos to fetch
+
     private final VideoRepository videoRepository;
     private final DiyRepository diyRepository;
 
@@ -33,8 +37,8 @@ public class HomeController {
     @GetMapping(ApiConfig.HOME)
     public ResponseEntity<HomeResponse> getHome() {
         // Use repository to get data with default offset/limit
-        final List<VideoCard> videos = videoRepository.search(0, 5);
-        final List<DiyCard> diys = diyRepository.search(0, 1);
+        final List<VideoCard> videos = videoRepository.search(DEFAULT_OFFSET, DEFAULT_VIDEO_LIMIT);
+        final List<DiyCard> diys = diyRepository.search(DEFAULT_OFFSET, DEFAULT_DIY_LIMIT);
         final HomeResponse response = HomeResponse.builder()
                 .recentVideos(videos)
                 .recentDIY(diys.isEmpty() ? null : diys.get(0))
