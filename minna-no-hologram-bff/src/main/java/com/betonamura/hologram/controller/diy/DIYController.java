@@ -38,13 +38,16 @@ public class DIYController {
      */
     @GetMapping(ApiConfig.DIY_SEARCH)
     public ResponseEntity<?> search(@Valid @ModelAttribute DIYsRequest request, BindingResult bindingResult) {
+        // Validate the request parameters
         if (bindingResult.hasErrors()) {
-            String message = bindingResult.getAllErrors().stream()
+            final String message = bindingResult.getAllErrors().stream()
                     .map(error -> error.getDefaultMessage())
                     .findFirst().orElse("Validation failed");
             ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), message);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
+
+        // Search for DIYs using the repository
         final List<DiyCard> diys = diyRepository.search(request.getOffset(), request.getLimit());
         final Pagination pagination = new Pagination(request.getOffset(), request.getLimit(),
                 diys.size(), 1);
@@ -54,7 +57,10 @@ public class DIYController {
     }
 
     @GetMapping(ApiConfig.DIY_DETAIL)
-    public ResponseEntity<?> getDIY(@Valid @ModelAttribute DIYDetailRequest request, BindingResult bindingResult) {
+    public ResponseEntity<?> getDIYDetail(@Valid @ModelAttribute DIYDetailRequest request,
+            BindingResult bindingResult) {
+
+        // Validate the request parameters
         if (bindingResult.hasErrors()) {
             String message = bindingResult.getAllErrors().stream()
                     .map(error -> error.getDefaultMessage())
@@ -62,6 +68,8 @@ public class DIYController {
             ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), message);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
+
+        // Fetch the DIY detail using the repository
         final DiyDetail detail = diyRepository.getDiyDetail(request.getSlugId());
         if (detail == null) {
             ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.NOT_FOUND.value()),

@@ -31,6 +31,13 @@ public class VideoController {
         this.videoResponseFactory = videoResponseFactory;
     }
 
+    /**
+     * Handles video search requests.
+     *
+     * @param request       The request containing search parameters
+     * @param bindingResult The result of validation
+     * @return A response entity containing the search results or an error message
+     */
     @GetMapping(ApiConfig.VIDEO_SEARCH)
     public ResponseEntity<?> search(@Valid @ModelAttribute VideosRequest request, BindingResult bindingResult) {
         // Validate the request parameters
@@ -42,7 +49,7 @@ public class VideoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
 
-        // Fetch videos by category and pagination
+        // Search for videos
         final List<VideoCard> videos = videoRepository.search(request.getOffset(), request.getLimit(),
                 request.getCategoryIds());
 
@@ -53,9 +60,18 @@ public class VideoController {
         return ResponseEntity.ok(response);
     }
 
+    /**
+     * Handles requests for video details.
+     *
+     * @param request       The request containing the video slug ID
+     * @param bindingResult The result of validation
+     * @return A response entity containing the video details or an error message
+     */
     @GetMapping(ApiConfig.VIDEO_DETAIL)
     public ResponseEntity<?> getVideoDetail(@Valid @ModelAttribute VideoDetailRequest request,
             BindingResult bindingResult) {
+
+        // Validate the request parameters
         if (bindingResult.hasErrors()) {
             String message = bindingResult.getAllErrors().stream()
                     .map(error -> error.getDefaultMessage())
@@ -63,8 +79,9 @@ public class VideoController {
             ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), message);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
-        String slugId = request.getSlugId();
-        final VideoDetail video = videoRepository.getVideoDetail(slugId);
+
+        // Fetch video details
+        final VideoDetail video = videoRepository.getVideoDetail(request.getSlugId());
         if (video == null) {
             ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.NOT_FOUND.value()),
                     "Video not found");
