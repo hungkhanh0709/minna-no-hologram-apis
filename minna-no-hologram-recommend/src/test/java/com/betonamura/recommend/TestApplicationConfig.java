@@ -61,7 +61,7 @@ public class TestApplicationConfig {
 
     @Bean
     @Primary
-    public SlmRepository slmService(RecommendationProperties properties, DataProvider dataProvider,
+    public SlmRepository slmRepository(RecommendationProperties properties, DataProvider dataProvider,
             UserHistoryData userHistoryData) {
         return new SlmRepositoryImpl(properties, dataProvider, userHistoryData);
     }

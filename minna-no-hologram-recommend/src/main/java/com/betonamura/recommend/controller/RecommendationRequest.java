@@ -2,7 +2,6 @@ package com.betonamura.recommend.controller;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,17 +23,11 @@ public class RecommendationRequest {
     private static final int MIN_LIMIT = 1;
     private static final int MAX_LIMIT = 50;
 
-    private static final String CATEGORY_ID_REQUIRED_MSG = "Category ID is required (must be 'video' or 'diy')";
-    private static final String CURRENT_ID_REQUIRED_MSG = "Current ID is required";
     private static final String LIMIT_MIN_MSG = "Limit must be at least " + MIN_LIMIT;
     private static final String LIMIT_MAX_MSG = "Limit cannot exceed " + MAX_LIMIT;
 
-    private String userUniqueId;
-
-    @NotBlank(message = CATEGORY_ID_REQUIRED_MSG)
+    private String userId;
     private String categoryId;
-
-    @NotBlank(message = CURRENT_ID_REQUIRED_MSG)
     private String currentId;
 
     @Min(value = MIN_LIMIT, message = LIMIT_MIN_MSG)

@@ -28,12 +28,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
     
-    // AI/ML dependencies for Small Language Model
-    // TODO: Replace with actual ML implementation when needed
-    implementation 'ai.djl:api:0.25.0'
-    implementation 'ai.djl.huggingface:tokenizers:0.25.0'
+    // AI/ML dependencies will be added in future when SLM is implemented
+    // See README-SLM-TODO.md for details on planned dependencies
     
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'

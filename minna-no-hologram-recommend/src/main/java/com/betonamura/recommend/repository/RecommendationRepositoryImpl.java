@@ -58,12 +58,10 @@ public class RecommendationRepositoryImpl {
         log.info("Generating recommendations for category: {}, current ID: {}",
                 request.getCategoryId(), request.getCurrentId());
 
-        final int limit = request.getLimit() != null ? request.getLimit() : 10;
-
         if (CATEGORY_VIDEO.equalsIgnoreCase(request.getCategoryId())) {
-            return getVideoRecommendations(request, limit);
+            return getVideoRecommendations(request, request.getLimit());
         } else if (CATEGORY_DIY.equalsIgnoreCase(request.getCategoryId())) {
-            return getDiyRecommendations(request, limit);
+            return getDiyRecommendations(request, request.getLimit());
         } else {
             throw new IllegalArgumentException(
                     "Invalid category ID. Must be '" + CATEGORY_VIDEO + "' or '" + CATEGORY_DIY + "'");
@@ -130,6 +128,8 @@ public class RecommendationRepositoryImpl {
      *         objects
      */
     private RecommendationResponse getDiyRecommendations(final RecommendationRequest request, final int limit) {
+
+        // Get the current DIY metadata
         final Optional<DIYMetadata> currentDiyOpt = dataProvider.getDIYById(request.getCurrentId());
 
         if (currentDiyOpt.isPresent()) {
@@ -148,7 +148,7 @@ public class RecommendationRepositoryImpl {
                     .build();
         } else {
             // Current DIY not found - return random DIYs
-            final List<DIYMetadata> popularDIYs = dataProvider.getAllDIYs();
+            final List<DIYMetadata> popularDIYs = new ArrayList<>(dataProvider.getAllDIYs());
             Collections.shuffle(popularDIYs);
             final List<DiyCard> relatedContent = popularDIYs.stream()
                     .map(diy -> convertToDiyCard(diy, 0.5))

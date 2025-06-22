@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.betonamura.recommend.config.RecommendationProperties;
@@ -17,16 +18,13 @@ import com.betonamura.recommend.domain.user.UserHistory;
 import com.betonamura.recommend.domain.video.VideoMetadata;
 
 import jakarta.annotation.PostConstruct;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Implementation of the SLM service using a simulated model
- * This is a simplified implementation that demonstrates the concept.
- * In a production environment, you would use a more sophisticated model.
+ * Implementation of the SLM service
+ * Currently using a simple algorithm, with TODOs for future SLM integration
  */
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class SlmRepositoryImpl implements SlmRepository {
 
@@ -34,22 +32,29 @@ public class SlmRepositoryImpl implements SlmRepository {
     private final DataProvider dataProvider;
     private final UserHistoryData userHistoryData;
 
-    // In a real implementation, you would have a model object here
-    // For simplicity, we're simulating the model behavior
+    @Autowired
+    public SlmRepositoryImpl(final RecommendationProperties properties,
+            final DataProvider dataProvider, final UserHistoryData userHistoryData) {
+        this.properties = properties;
+        this.dataProvider = dataProvider;
+        this.userHistoryData = userHistoryData;
+    }
 
     @PostConstruct
     @Override
     public void initModel() {
         try {
-            log.info("Initializing simulated recommendation model: {}", properties.getModel().getName());
+            log.info("Initializing recommendation service");
 
-            // In a real implementation, you would load the model here
-            // For now, we just use the in-memory data providers
+            // TODO: Initialize SLM model for content recommendations
+            // 1. Load a pre-trained model like sentence-transformers/all-MiniLM-L6-v2
+            // 2. Setup vector database or in-memory cache for embeddings
+            // 3. Pre-compute embeddings for existing content
 
-            log.info("Model initialization completed");
+            log.info("Recommendation service initialized");
         } catch (Exception e) {
-            log.error("Failed to initialize model", e);
-            throw new RuntimeException("Failed to initialize model", e);
+            log.error("Failed to initialize recommendation service", e);
+            throw new RuntimeException("Failed to initialize recommendation service", e);
         }
     }
 
@@ -58,18 +63,19 @@ public class SlmRepositoryImpl implements SlmRepository {
         try {
             log.debug("Generating recommendations with context: {}", context.keySet());
 
-            // Extract data from context
             List<String> recommendedVideoIds = new ArrayList<>();
 
-            // In a real implementation, you would use the model to generate recommendations
-            // For now, we'll simulate this with a simple algorithm
+            // TODO: Use SLM for content-based recommendations
+            // 1. Generate embeddings for current content/user profile
+            // 2. Find similar content using vector similarity
+            // 3. Return most similar items
 
             if (context.containsKey("currentVideo")) {
-                // Content-based recommendations
+                // Simple content-based recommendations for now
                 VideoMetadata currentVideo = (VideoMetadata) context.get("currentVideo");
                 recommendedVideoIds = getContentBasedRecommendations(currentVideo, excludeVideoIds);
             } else if (context.containsKey("userId")) {
-                // User history-based recommendations
+                // Simple user history-based recommendations for now
                 String userId = (String) context.get("userId");
                 recommendedVideoIds = getUserHistoryBasedRecommendations(userId, excludeVideoIds);
             }
@@ -82,36 +88,32 @@ public class SlmRepositoryImpl implements SlmRepository {
             return recommendedVideoIds;
         } catch (Exception e) {
             log.error("Error generating recommendations", e);
-            // Return empty list on error
             return new ArrayList<>();
         }
     }
 
     @Override
     public void trainModel() {
-        // In a real implementation, you would update the model with new data
         log.info("Training recommendation model...");
 
-        // Simulating training time
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        // TODO: Implement SLM model training or fine-tuning
+        // 1. Collect user interaction data and create training dataset
+        // 2. Fine-tune embedding model if needed
+        // 3. Update content embeddings based on new content and user preferences
 
         log.info("Model training completed");
     }
 
     /**
-     * Get content-based recommendations using similar categories and tags
+     * Get content-based recommendations using simple category matching
+     * TODO: Replace with SLM-based similarity in future
      */
     private List<String> getContentBasedRecommendations(VideoMetadata currentVideo, Set<String> excludeVideoIds) {
         log.debug("Generating content-based recommendations for video: {}", currentVideo.getVideoId());
 
-        // Get videos from same category
+        // Simple approach: Get videos from same category
         List<VideoMetadata> similarVideos = dataProvider.getVideosByCategory(currentVideo.getCategoryId());
 
-        // Convert to result list, excluding the current video and watched videos
         return similarVideos.stream()
                 .filter(video -> !video.getVideoId().equals(currentVideo.getVideoId()))
                 .filter(video -> !excludeVideoIds.contains(video.getVideoId()))
@@ -121,6 +123,7 @@ public class SlmRepositoryImpl implements SlmRepository {
 
     /**
      * Get recommendations based on user's watch history
+     * TODO: Replace with SLM-based user profile modeling in future
      */
     private List<String> getUserHistoryBasedRecommendations(String userId, Set<String> excludeVideoIds) {
         log.debug("Generating user history based recommendations for user: {}", userId);
@@ -136,7 +139,7 @@ public class SlmRepositoryImpl implements SlmRepository {
                     .collect(Collectors.toList());
         }
 
-        // Find the most common categories in the user's history
+        // Simple approach: Find the most common categories in user history
         Map<String, Integer> categoryScores = new HashMap<>();
 
         for (UserHistory history : userHistory) {
@@ -170,7 +173,7 @@ public class SlmRepositoryImpl implements SlmRepository {
             }
         }
 
-        // If we don't have enough recommendations, add popular videos
+        // Add popular videos if we don't have enough
         if (recommendedVideos.size() < 20) {
             List<String> popularVideoIds = dataProvider.getPopularVideos(20).stream()
                     .filter(video -> !excludeVideoIds.contains(video.getVideoId()))

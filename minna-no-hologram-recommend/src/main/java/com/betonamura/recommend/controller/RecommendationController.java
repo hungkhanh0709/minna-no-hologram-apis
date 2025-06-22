@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.betonamura.recommend.config.ApiConfig;
@@ -18,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
  * Controller for recommendation API endpoints.
  */
 @Slf4j
-@RequestMapping
 @RestController
 public class RecommendationController {
 
@@ -43,8 +41,6 @@ public class RecommendationController {
             String message = bindingResult.getAllErrors().stream()
                     .map(error -> error.getDefaultMessage())
                     .findFirst().orElse("Validation failed");
-
-            log.warn("Validation failed: {}", message);
             return ResponseEntity.badRequest().body(ErrorResponse.of(message));
         }
 

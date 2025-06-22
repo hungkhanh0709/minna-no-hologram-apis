@@ -20,17 +20,27 @@ spring:
 # SLM configuration
 recommendation:
   model:
-    name: "distilbert-base-uncased"
+    # Model configuration
+    # Use a model like "sentence-transformers/all-MiniLM-L6-v2"
+    name: "sentence-transformers/all-MiniLM-L6-v2"
     path: models
     cache-dir: ${user.home}/.hologram-recommend/models
-    embedding-dimension: 768
+    embedding-dimension: 384 # 384 for MiniLM-L6-v2 (768 for larger models)
     max-length: 128
     batch-size: 16
+    enabled: true
+    # Options: huggingface, openai, tensorflow, mock
+    provider: "huggingface"
+    # API key for cloud-based models (leave empty for local models)
+    api-key: ""
   # How many recommendations to return
   default-limit: 10
   min-similarity-score: 0.5
+  # Precompute embeddings on startup and after adding new content
+  precompute-embeddings: true
   # Cache configuration
   cache:
+    enabled: true
     ttl-minutes: 30
     max-size: 1000
 
