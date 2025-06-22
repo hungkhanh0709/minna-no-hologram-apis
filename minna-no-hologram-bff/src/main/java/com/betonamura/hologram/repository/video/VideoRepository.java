@@ -124,7 +124,8 @@ public class VideoRepository {
                 }
 
                 // Get recommended videos from the recommendation service
-                List<VideoCard> relatedVideos = this.getRelatedVideos(videoDetail.getId());
+                List<VideoCard> relatedVideos = this.getRelatedVideos(videoDetail.getId(),
+                                videoDetail.getCategory().getId());
 
                 // Create a new VideoDetail with updated related videos
                 return VideoDetail.builder()
@@ -148,18 +149,15 @@ public class VideoRepository {
          * @param currentId the ID of the current video
          * @return a list of related video cards
          */
-        private List<VideoCard> getRelatedVideos(final String currentId) {
+        private List<VideoCard> getRelatedVideos(final String currentId, final String cagegoryId) {
                 // Get recommended videos from the recommendation service
                 List<VideoCard> relatedVideos = recommendationRepository.getRecommendedVideos(
                                 currentId, DEFAULT_RELATED_VIDEOS);
 
                 // If recommendation service fails, get videos of the same category
                 if (ObjectUtils.isEmpty(relatedVideos)) {
-                        relatedVideos = VideoData.getVideosByCategory(
-                                        currentId,
-                                        DEFAULT_RELATED_VIDEOS);
+                        relatedVideos = VideoData.getVideosByCategory(currentId, cagegoryId, DEFAULT_RELATED_VIDEOS);
                 }
-
                 return relatedVideos;
         }
 }

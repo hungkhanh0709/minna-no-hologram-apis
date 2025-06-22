@@ -1,17 +1,18 @@
 package com.betonamura.hologram.repository.recommend;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.betonamura.hologram.domain.ContentType;
 import com.betonamura.hologram.domain.diy.DiyCard;
 import com.betonamura.hologram.domain.video.VideoCard;
 
@@ -44,18 +45,25 @@ public class RecommendationRepositoryImpl implements RecommendationRepository {
         this.restTemplate = restTemplate;
     }
 
-    /**
-     * Helper method to build the recommendation API URL
-     * 
-     * @return The fully constructed API URL
-     */
-    private String buildApiUrl() {
-        return UriComponentsBuilder.newInstance()
-                .scheme("http")
-                .host(recommendationApiHost)
-                .port(recommendationApiPort)
-                .path(recommendationApiPath)
-                .toUriString();
+    @Override
+    public List<VideoCard> getRecommendedVideos(final String currentId, final int limit) {
+        final RecommendationResponse response = makeRecommendationRequest(currentId, ContentType.VIDEO, limit);
+        if (ObjectUtils.isEmpty(response)) {
+            log.debug("No video recommendations returned for videoId: {}", currentId);
+            return new ArrayList<>();
+        }
+
+        return response.getVideos();
+    }
+
+    @Override
+    public List<DiyCard> getRecommendedDiys(final String currentId, final int limit) {
+        RecommendationResponse response = makeRecommendationRequest(currentId, ContentType.VIDEO, limit);
+        if (ObjectUtils.isEmpty(response) || ObjectUtils.isEmpty(response.getDiys())) {
+            log.debug("No DIY recommendations returned for videoId: {}", currentId);
+            return new ArrayList<>();
+        }
+        return response.getDiys();
     }
 
     /**
@@ -66,73 +74,39 @@ public class RecommendationRepositoryImpl implements RecommendationRepository {
      * @param limit       Maximum number of recommendations to return
      * @return The API response or null if there was an error
      */
-    private RecommendationResponse makeRecommendationRequest(String contentId, ContentType contentType, int limit) {
+    private RecommendationResponse makeRecommendationRequest(final String contentId,
+            final ContentType contentType, final int limit) {
         try {
-            String apiUrl = buildApiUrl();
-            log.debug("Making recommendation request to {} for {} with ID {}", apiUrl, contentType, contentId);
+            String apiUrl = UriComponentsBuilder.newInstance()
+                    .scheme("http")
+                    .host(recommendationApiHost)
+                    .port(recommendationApiPort)
+                    .path(recommendationApiPath)
+                    .toUriString();
+            log.info("Making recommendation request to {} for {} with ID {}", apiUrl, contentType, contentId);
 
-            RecommendationRequest request = RecommendationRequest.builder()
+            final RecommendationRequest request = RecommendationRequest.builder()
                     .contentId(contentId)
                     .contentType(contentType)
                     .userId(DEFAULT_USER_ID)
                     .limit(limit > 0 ? limit : DEFAULT_LIMIT)
                     .build();
 
-            ResponseEntity<RecommendationResponse> response = restTemplate.postForEntity(
+            final ResponseEntity<RecommendationResponse> response = restTemplate.postForEntity(
                     apiUrl, request, RecommendationResponse.class);
 
-            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-                return response.getBody();
+            if (ObjectUtils.isEmpty(response) || !response.getStatusCode().is2xxSuccessful()
+                    || ObjectUtils.isEmpty(response.getBody())) {
+                log.warn("Unsuccessful response from recommendation API: {} for content type: {} and ID: {}",
+                        response != null ? response.getStatusCode() : "null", contentType, contentId);
+                return null;
             }
 
-            log.warn("Unsuccessful response from recommendation API: {} for content type: {} and ID: {}",
-                    response.getStatusCode(), contentType, contentId);
-            return null;
+            // Return the body of the response
+            return response.getBody();
         } catch (RestClientException ex) {
             log.warn("Error making recommendation request: {}", ex.getMessage());
             return null;
         }
-    }
-
-    @Override
-    public List<VideoCard> getRecommendedVideos(String videoId, int limit) {
-        RecommendationResponse response = makeRecommendationRequest(videoId, ContentType.VIDEO, limit);
-        if (response != null && response.getVideos() != null) {
-            return response.getVideos();
-        }
-        log.debug("No video recommendations returned for videoId: {}", videoId);
-        return new ArrayList<>();
-    }
-
-    @Override
-    public List<DiyCard> getRecommendedDiys(String videoId, int limit) {
-        // This method gets DIY recommendations for a VIDEO, so use ContentType.VIDEO
-        RecommendationResponse response = makeRecommendationRequest(videoId, ContentType.VIDEO, limit);
-        if (response != null && response.getDiys() != null) {
-            return response.getDiys();
-        }
-        log.debug("No DIY recommendations returned for videoId: {}", videoId);
-        return Collections.emptyList();
-    }
-
-    @Override
-    public List<VideoCard> getRecommendedVideosByDiy(String diyId, int limit) {
-        // This method gets VIDEO recommendations for a DIY, so use ContentType.DIY
-        RecommendationResponse response = makeRecommendationRequest(diyId, ContentType.DIY, limit);
-        if (response != null && response.getVideos() != null) {
-            return response.getVideos();
-        }
-        log.debug("No video recommendations returned for DIY id: {}", diyId);
-        return Collections.emptyList();
-    }
-
-    @Override
-    public List<DiyCard> getRecommendedDiysByDiy(String diyId, int limit) {
-        RecommendationResponse response = makeRecommendationRequest(diyId, ContentType.DIY, limit);
-        if (response != null && response.getDiys() != null) {
-            return response.getDiys();
-        }
-        log.debug("No DIY recommendations returned for DIY id: {}", diyId);
-        return Collections.emptyList();
     }
 }

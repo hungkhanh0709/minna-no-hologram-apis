@@ -1,5 +1,7 @@
 package com.betonamura.hologram.repository.recommend;
 
+import com.betonamura.hologram.domain.ContentType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

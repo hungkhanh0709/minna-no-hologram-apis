@@ -26,32 +26,57 @@ public class VideoData {
 
     // Real, verified hologram videos from YouTube (actual hologram tutorials and
     // demonstrations)
-    private static final String DEFAULT_HOLOGRAM_URL = "https://www.youtube.com/embed/Y60mfBvXCj8";
+    private static final String DEFAULT_HOLOGRAM_URL = "https://www.youtube.com/embed/Y60mfBvXCj8"; // Hologram Project
+                                                                                                    // by Kiste
     private static final List<String> HOLOGRAM_VIDEO_URLS = List.of(
-            DEFAULT_HOLOGRAM_URL, // 3D Hologram Projector Tutorial
-            "https://www.youtube.com/embed/7YWTtCsvgvg", // DIY Hologram Pyramid
-            "https://www.youtube.com/embed/Y5p4JFt3o5o", // How to Make a Hologram Projector
-            "https://www.youtube.com/embed/0YiaOJbnRNI", // 3D Hologram DIY
-            "https://www.youtube.com/embed/vnrKMpgYa2Y", // Smart Hologram Effect
-            "https://www.youtube.com/embed/9t1xDnWIguo", // 3D Holographic Display
-            "https://www.youtube.com/embed/kObRDkxR1BI", // Hologram Maker Tutorial
-            "https://www.youtube.com/embed/JvrAFX213Wg", // Pyramid Hologram Display
-            "https://www.youtube.com/embed/qsLOhRJVGiM", // 3D Hologram Fan Display
-            "https://www.youtube.com/embed/CJ5Xtj83cYQ", // DIY Hologram for Mobile
-            "https://www.youtube.com/embed/14oElD6DK_Y", // Hologram Dance Performance
-            "https://www.youtube.com/embed/rKRHi_2FgmQ", // Hologram Technology Demonstration
-            "https://www.youtube.com/embed/BRfF_HWxGY8", // Hologram Art Installation
-            "https://www.youtube.com/embed/lGJ-5oVzjdI", // Hologram Science Projects
-            "https://www.youtube.com/embed/Mno4HVH9cw4", // History through Holograms
-            "https://www.youtube.com/embed/Q3W1ChIzlZ0", // Hologram Technology Explained
-            "https://www.youtube.com/embed/eCXQMzLAgbs", // 3D Hologram Display Technology
-            "https://www.youtube.com/embed/XBkGs_LfeQU", // DIY 3D Hologram
-            "https://www.youtube.com/embed/vZ_YpjAd8cM", // Pyramid Hologram with Smartphone
-            "https://www.youtube.com/embed/NuIJiLd6xCk" // Advanced Hologram Technology
+            DEFAULT_HOLOGRAM_URL, // Hologram Project by Kiste
+            "https://www.youtube.com/embed/WYvYIAOP_S4", // All in One Hologram Technology Video For Holographic Pyramid
+            "https://www.youtube.com/embed/9pan7fgDkxY", // HOLHO Collection: amazing 3D animals for 4 faces Pyramid
+            "https://www.youtube.com/embed/ASX_d0H0HYw", // Plasma Dubstep - Pyramid Hologram Screen Up & Down [4K]
+            "https://www.youtube.com/embed/Uftu0RaIDkw", // Hummingbird SloMo - Pyramid Hologram Screen Up [4K]
+            "https://www.youtube.com/embed/BgUb7R9Tur0", // Jellyfish hologram video
+            "https://www.youtube.com/embed/Lz6YGP_yFaA", // Ironman hologram Technology Video
+            "https://www.youtube.com/embed/e5DOApUtf7M", // The Sun - Pyramid Hologram Screen Down
+            "https://www.youtube.com/embed/5DZ6D70m0pU", // The Moon - Pyramid Hologram Screen Up
+            "https://www.youtube.com/embed/z5lfdGhzF3Q", // The Moon - Pyramid Hologram Screen Down
+            "https://www.youtube.com/embed/DcDDNtuBZ5o", // Dragon Ball Z hologram Technology Video
+            "https://www.youtube.com/embed/tlO0qIk9N2o", // Dragon Ball Z - Pyramid Hologram - Holho
+            "https://www.youtube.com/embed/b2sWTWwh-oc", // Yin Yang Mutations - Pyramid Hologram Screen Down
+            "https://www.youtube.com/embed/Xdj2Qoy1LhA", // Black Hole - Pyramid Hologram Screen Up & Down [4K]
+            "https://www.youtube.com/embed/zzjqYbdSgxE", // Love Heart on hologram Technology Video
+            "https://www.youtube.com/embed/uW3I4OLqvjs", // BB-8 Star Wars Droid for Hologram Pyramid
+            "https://www.youtube.com/embed/R4AYYk0Nzf4", // Princess Leia Hologram - 4faces pyramid
+            "https://www.youtube.com/embed/asNoWcrfebk", // Blooming Flowers - Pyramid Hologram Screen Up
+            "https://www.youtube.com/embed/IGZ2bBII3GQ", // Spiderman Dance on hologram Technology Video
+            "https://www.youtube.com/embed/PuAb_GhO5Cc" // Ferrari Car Video For Holographic Pyramid
     );
 
-    // Real, existing Unsplash images related to hologram technology (all verified
-    // to exist)
+    // Thumbnail URLs for the hologram videos from YouTube
+    private static final List<String> HOLOGRAM_THUMBNAIL_URLS = List.of(
+            "https://img.youtube.com/vi/Y60mfBvXCj8/maxresdefault.jpg", // Hologram Project by Kiste
+            "https://img.youtube.com/vi/WYvYIAOP_S4/maxresdefault.jpg", // All in One Hologram Technology
+            "https://img.youtube.com/vi/9pan7fgDkxY/maxresdefault.jpg", // HOLHO Collection: 3D animals
+            "https://img.youtube.com/vi/ASX_d0H0HYw/maxresdefault.jpg", // Plasma Dubstep
+            "https://img.youtube.com/vi/Uftu0RaIDkw/maxresdefault.jpg", // Hummingbird SloMo
+            "https://img.youtube.com/vi/BgUb7R9Tur0/maxresdefault.jpg", // Jellyfish hologram
+            "https://img.youtube.com/vi/Lz6YGP_yFaA/maxresdefault.jpg", // Ironman hologram
+            "https://img.youtube.com/vi/e5DOApUtf7M/maxresdefault.jpg", // The Sun
+            "https://img.youtube.com/vi/5DZ6D70m0pU/maxresdefault.jpg", // The Moon (Screen Up)
+            "https://img.youtube.com/vi/z5lfdGhzF3Q/maxresdefault.jpg", // The Moon (Screen Down)
+            "https://img.youtube.com/vi/DcDDNtuBZ5o/maxresdefault.jpg", // Dragon Ball Z hologram
+            "https://img.youtube.com/vi/tlO0qIk9N2o/maxresdefault.jpg", // Dragon Ball Z - Holho
+            "https://img.youtube.com/vi/b2sWTWwh-oc/maxresdefault.jpg", // Yin Yang Mutations
+            "https://img.youtube.com/vi/Xdj2Qoy1LhA/maxresdefault.jpg", // Black Hole
+            "https://img.youtube.com/vi/zzjqYbdSgxE/maxresdefault.jpg", // Love Heart
+            "https://img.youtube.com/vi/uW3I4OLqvjs/maxresdefault.jpg", // BB-8 Star Wars
+            "https://img.youtube.com/vi/R4AYYk0Nzf4/maxresdefault.jpg", // Princess Leia
+            "https://img.youtube.com/vi/asNoWcrfebk/maxresdefault.jpg", // Blooming Flowers
+            "https://img.youtube.com/vi/IGZ2bBII3GQ/maxresdefault.jpg", // Spiderman Dance
+            "https://img.youtube.com/vi/PuAb_GhO5Cc/maxresdefault.jpg" // Ferrari Car Video
+    );
+
+    // Image URLs kept as fallback, though we're now primarily using YouTube
+    // thumbnails
     private static final List<String> SCIENCE_IMAGE_URLS = List.of(
             "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80", // Futuristic UI
             "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80", // Tech hologram
@@ -62,25 +87,8 @@ public class VideoData {
             "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80" // Physics
     );
 
-    private static final List<String> HISTORY_IMAGE_URLS = List.of(
-            "https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?q=80", // Hieroglyphs
-            "https://images.unsplash.com/photo-1461360228754-6e81c478b882?q=80", // Ancient ruins
-            "https://images.unsplash.com/photo-1551376347-075b0121a903?q=80", // Museum
-            "https://images.unsplash.com/photo-1495121553079-4c61bcce1894?q=80", // Ancient artifact
-            "https://images.unsplash.com/photo-1603199506016-b9a594b593c0?q=80", // Historical document
-            "https://images.unsplash.com/photo-1608817576203-3c27ed168bd2?q=80", // Ancient Egypt
-            "https://images.unsplash.com/photo-1566162094866-6d93cd955fb1?q=80" // Historical building
-    );
-
-    private static final List<String> CULTURE_IMAGE_URLS = List.of(
-            "https://images.unsplash.com/photo-1529148482759-b35b25c5f217?q=80", // Cultural ceremony
-            "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80", // Museum exhibit
-            "https://images.unsplash.com/photo-1532105956634-040a23c33ff3?q=80", // Cultural dance
-            "https://images.unsplash.com/photo-1553531889-e6cf4d692b1b?q=80", // Cultural symbol
-            "https://images.unsplash.com/photo-1560329072-17f59dcd30a4?q=80", // Cultural music
-            "https://images.unsplash.com/photo-1527838832700-5059252407fa?q=80", // Art gallery
-            "https://images.unsplash.com/photo-1492037766660-2a56f9eb3fcb?q=80" // Cultural festival
-    );
+    // We now use the YouTube thumbnails directly, so these image collections are no
+    // longer needed
 
     // The descriptions have been incorporated into the VideoQAItem content for
     // better context
@@ -195,7 +203,7 @@ public class VideoData {
      * @param limit    Maximum number of videos to return
      * @return Filtered list of VideoCard objects
      */
-    public static List<VideoCard> getVideosByCategory(final String category, final int limit) {
+    public static List<VideoCard> getVideosByCategory(final String videoId, final String category, final int limit) {
         if (!StringUtils.hasText(category)) {
             return getVideoCards(limit);
         }
@@ -203,6 +211,7 @@ public class VideoData {
         final List<VideoDetail> allVideos = getVideosDetail();
         return allVideos.stream()
                 .filter(v -> v.getCategory().getId().equals(category))
+                .filter(v -> videoId == null || !v.getId().equals(videoId))
                 .limit(limit)
                 .map(VideoData::toVideoCard)
                 .collect(Collectors.toList());
@@ -224,138 +233,6 @@ public class VideoData {
                 .tags(detail.getTags())
                 .likeCount(detail.getLikeCount())
                 .build();
-    }
-
-    /**
-     * Create science category video records
-     * 
-     * @return List of science video details
-     */
-    private static List<VideoDetail> createScienceVideos() {
-        final List<VideoDetail> videos = new ArrayList<>();
-
-        final String[] titles = {
-                "Quantum Physics Explained with Holograms",
-                "The Science Behind Holographic Projections",
-                "Medical Applications of Hologram Technology",
-                "Principles of Light in Hologram Creation",
-                "Space Exploration Visualized Through Holograms",
-                "Molecular Biology in 3D Holographic Display",
-                "Scientific Visualization Using Hologram Technology",
-                "Environmental Science Data in Holographic Form"
-        };
-
-        for (int i = 0; i < titles.length; i++) {
-            final String id = "sci-" + (100 + i);
-            final String slug = generateSlugFromTitle(titles[i]);
-
-            // Defensive: fallback to a safe video URL if list is null/empty
-            String videoUrl;
-            if (HOLOGRAM_VIDEO_URLS != null && !HOLOGRAM_VIDEO_URLS.isEmpty()) {
-                videoUrl = HOLOGRAM_VIDEO_URLS.get(i % HOLOGRAM_VIDEO_URLS.size());
-            } else {
-                // fallback default
-                videoUrl = DEFAULT_HOLOGRAM_URL;
-            }
-
-            videos.add(VideoDetail.builder()
-                    .id(id)
-                    .slug(slug)
-                    .title(titles[i])
-                    .thumbnail(SCIENCE_IMAGE_URLS.get(i % SCIENCE_IMAGE_URLS.size()))
-                    .videoUrl(videoUrl)
-                    .category(categoryRepo.findById("science"))
-                    .tags(buildScienceTags())
-                    .likeCount(100 + random.nextInt(1500))
-                    .qaContent(SCIENCE_QA_SETS.get(i % SCIENCE_QA_SETS.size()))
-                    .relatedVideos(new ArrayList<>()) // Will be populated later
-                    .createdAt(getRandomCreationDate().toString())
-                    .build());
-        }
-
-        return videos;
-    }
-
-    /**
-     * Create history category video records
-     * 
-     * @return List of history video details
-     */
-    private static List<VideoDetail> createHistoryVideos() {
-        final List<VideoDetail> videos = new ArrayList<>();
-
-        final String[] titles = {
-                "Ancient Egypt Brought to Life with Holograms",
-                "Medieval Castles: Holographic Reconstructions",
-                "Dinosaurs in Your Living Room: Holographic Paleontology",
-                "Roman Empire: A Holographic Journey",
-                "Archaeological Discoveries in Holographic Detail",
-                "Historical Battles Recreated with Hologram Technology",
-                "Lost Cities Rebuilt Through Hologram Technology",
-                "Ancient Writing Systems Decoded with Holograms"
-        };
-
-        for (int i = 0; i < titles.length; i++) {
-            final String id = "hist-" + (200 + i);
-            final String slug = generateSlugFromTitle(titles[i]);
-
-            videos.add(VideoDetail.builder()
-                    .id(id)
-                    .slug(slug)
-                    .title(titles[i])
-                    .thumbnail(HISTORY_IMAGE_URLS.get(i % HISTORY_IMAGE_URLS.size()))
-                    .videoUrl(HOLOGRAM_VIDEO_URLS.get((i + 5) % HOLOGRAM_VIDEO_URLS.size()))
-                    .category(categoryRepo.findById("history"))
-                    .tags(buildHistoryTags())
-                    .likeCount(100 + random.nextInt(1500))
-                    .qaContent(HISTORY_QA_SETS.get(i % HISTORY_QA_SETS.size()))
-                    .relatedVideos(new ArrayList<>()) // Will be populated later
-                    .createdAt(getRandomCreationDate().toString())
-                    .build());
-        }
-
-        return videos;
-    }
-
-    /**
-     * Create culture category video records
-     * 
-     * @return List of culture video details
-     */
-    private static List<VideoDetail> createCultureVideos() {
-        final List<VideoDetail> videos = new ArrayList<>();
-
-        final String[] titles = {
-                "Traditional Dance Forms in Holographic Performances",
-                "Cultural Festivals Around the World: Holographic Tour",
-                "Ancient Musical Instruments Through Holograms",
-                "Indigenous Art Forms Preserved Through Holography",
-                "Cultural Rituals and Ceremonies in 3D Holograms",
-                "Traditional Crafts From Around the World",
-                "Sacred Sites and Temples as Holographic Models",
-                "Cultural Heritage Preservation Through Holography"
-        };
-
-        for (int i = 0; i < titles.length; i++) {
-            final String id = "cult-" + (300 + i);
-            final String slug = generateSlugFromTitle(titles[i]);
-
-            videos.add(VideoDetail.builder()
-                    .id(id)
-                    .slug(slug)
-                    .title(titles[i])
-                    .thumbnail(CULTURE_IMAGE_URLS.get(i % CULTURE_IMAGE_URLS.size()))
-                    .videoUrl(HOLOGRAM_VIDEO_URLS.get((i + 10) % HOLOGRAM_VIDEO_URLS.size()))
-                    .category(categoryRepo.findById("culture"))
-                    .tags(buildCultureTags())
-                    .likeCount(100 + random.nextInt(1500))
-                    .qaContent(CULTURE_QA_SETS.get(i % CULTURE_QA_SETS.size()))
-                    .relatedVideos(new ArrayList<>()) // Will be populated later
-                    .createdAt(getRandomCreationDate().toString())
-                    .build());
-        }
-
-        return videos;
     }
 
     /**
@@ -388,49 +265,181 @@ public class VideoData {
     }
 
     /**
-     * Build tags for science category
+     * Build dynamic tags for a video based on its title and category
      * 
-     * @return List of appropriate tags
+     * @param title    The title of the video
+     * @param index    The index of the video in the list
+     * @param category The category of the video
+     * @return List of dynamically generated tags
      */
-    private static List<Tag> buildScienceTags() {
-        return List.of(
-                buildTag("hologram", "Hologram"),
-                buildTag("education", "Education"),
-                buildTag("3d", "3D"),
-                buildTag("physics", "Physics"),
-                buildTag("technology", "Technology"),
-                buildTag("science", "Science"));
+    private static List<Tag> generateDynamicTags(String title, int index, String category) {
+        List<Tag> tags = new ArrayList<>();
+        tags.add(buildTag("hologram", "Hologram"));
+        tags.add(buildTag(category, StringUtils.capitalize(category)));
+        if (title.toLowerCase().contains("physics"))
+            tags.add(buildTag("physics", "Physics"));
+        if (title.toLowerCase().contains("biology"))
+            tags.add(buildTag("biology", "Biology"));
+        if (title.toLowerCase().contains("history"))
+            tags.add(buildTag("history", "History"));
+        if (title.toLowerCase().contains("art"))
+            tags.add(buildTag("arts", "Arts"));
+        if (title.toLowerCase().contains("music"))
+            tags.add(buildTag("music", "Music"));
+        if (index % 2 == 0)
+            tags.add(buildTag("education", "Education"));
+        if (index % 3 == 0)
+            tags.add(buildTag("technology", "Technology"));
+        return tags;
     }
 
     /**
-     * Build tags for history category
+     * Create science category video records
      * 
-     * @return List of appropriate tags
+     * @return List of science video details
      */
-    private static List<Tag> buildHistoryTags() {
-        return List.of(
-                buildTag("hologram", "Hologram"),
-                buildTag("education", "Education"),
-                buildTag("history", "History"),
-                buildTag("ancient-history", "Ancient History"),
-                buildTag("archaeology", "Archaeology"),
-                buildTag("artifacts", "Artifacts"));
+    private static List<VideoDetail> createScienceVideos() {
+        final List<VideoDetail> videos = new ArrayList<>();
+
+        final String[] titles = {
+                "Hologram Technology: Principles and Applications", // Hologram Project by Kiste
+                "All in One Hologram Technology for Holographic Pyramid",
+                "3D Animals for 4 Faces Pyramid Hologram",
+                "Plasma Dubstep - Pyramid Hologram [4K]",
+                "Hummingbird SloMo - Advanced Holographic Display",
+                "Jellyfish Hologram: Underwater Life in 3D",
+                "Molecular Visualization Using Holographic Technology",
+                "Environmental Science Data in Holographic Form"
+        };
+
+        for (int i = 0; i < titles.length; i++) {
+            final String id = "sci-" + (100 + i);
+            final String slug = generateSlugFromTitle(titles[i]);
+
+            // Defensive: fallback to a safe video URL if list is null/empty
+            String videoUrl;
+            String thumbnail;
+            if (HOLOGRAM_VIDEO_URLS != null && !HOLOGRAM_VIDEO_URLS.isEmpty()) {
+                videoUrl = HOLOGRAM_VIDEO_URLS.get(i % HOLOGRAM_VIDEO_URLS.size());
+                thumbnail = HOLOGRAM_THUMBNAIL_URLS.get(i % HOLOGRAM_THUMBNAIL_URLS.size());
+            } else {
+                // fallback default
+                videoUrl = DEFAULT_HOLOGRAM_URL;
+                thumbnail = SCIENCE_IMAGE_URLS.get(i % SCIENCE_IMAGE_URLS.size());
+            }
+
+            videos.add(VideoDetail.builder()
+                    .id(id)
+                    .slug(slug)
+                    .title(titles[i])
+                    .thumbnail(thumbnail)
+                    .videoUrl(videoUrl)
+                    .category(categoryRepo.findById("science"))
+                    .tags(generateDynamicTags(titles[i], i, "science"))
+                    .likeCount(100 + random.nextInt(1500))
+                    .qaContent(SCIENCE_QA_SETS.get(i % SCIENCE_QA_SETS.size()))
+                    .relatedVideos(new ArrayList<>()) // Will be populated later
+                    .createdAt(getRandomCreationDate().toString())
+                    .build());
+        }
+
+        return videos;
     }
 
     /**
-     * Build tags for culture category
+     * Create history category video records
      * 
-     * @return List of appropriate tags
+     * @return List of history video details
      */
-    private static List<Tag> buildCultureTags() {
-        return List.of(
-                buildTag("hologram", "Hologram"),
-                buildTag("education", "Education"),
-                buildTag("culture", "Culture"),
-                buildTag("traditions", "Traditions"),
-                buildTag("arts", "Arts"),
-                buildTag("heritage", "Heritage"));
+    private static List<VideoDetail> createHistoryVideos() {
+        final List<VideoDetail> videos = new ArrayList<>();
+
+        final String[] titles = {
+                "The Sun - Pyramid Hologram Screen Down",
+                "The Moon - Pyramid Hologram Screen Up",
+                "The Moon - Pyramid Hologram Screen Down",
+                "Yin Yang Mutations - Pyramid Hologram Visualization",
+                "Black Hole - Pyramid Hologram Screen [4K]",
+                "BB-8 Star Wars Droid - 4 Side Pyramid Hologram",
+                "Princess Leia Hologram - Star Wars 4-Face Pyramid",
+                "Blooming Flowers - Historical Hologram Recreation"
+        };
+
+        for (int i = 0; i < titles.length; i++) {
+            final String id = "hist-" + (200 + i);
+            final String slug = generateSlugFromTitle(titles[i]);
+
+            // Select video URL and thumbnail with appropriate offset
+            final int videoIndex = (i + 7) % HOLOGRAM_VIDEO_URLS.size(); // Start from 7th video
+            final String videoUrl = HOLOGRAM_VIDEO_URLS.get(videoIndex);
+            final String thumbnail = HOLOGRAM_THUMBNAIL_URLS.get(videoIndex);
+
+            videos.add(VideoDetail.builder()
+                    .id(id)
+                    .slug(slug)
+                    .title(titles[i])
+                    .thumbnail(thumbnail)
+                    .videoUrl(videoUrl)
+                    .category(categoryRepo.findById("history"))
+                    .tags(generateDynamicTags(titles[i], i, "history"))
+                    .likeCount(100 + random.nextInt(1500))
+                    .qaContent(HISTORY_QA_SETS.get(i % HISTORY_QA_SETS.size()))
+                    .relatedVideos(new ArrayList<>()) // Will be populated later
+                    .createdAt(getRandomCreationDate().toString())
+                    .build());
+        }
+
+        return videos;
     }
+
+    /**
+     * Create culture category video records
+     * 
+     * @return List of culture video details
+     */
+    private static List<VideoDetail> createCultureVideos() {
+        final List<VideoDetail> videos = new ArrayList<>();
+
+        final String[] titles = {
+                "Love Heart - Holographic Pyramid 4-Face View",
+                "Dragon Ball Z - Hologram 4-Face View",
+                "Dragon Ball Z - Pyramid Hologram - Holho",
+                "Ironman Hologram Technology Video",
+                "Ferrari Car Video For Holographic Pyramid",
+                "Spiderman Dance - Holographic Pyramid",
+                "Hologram Video Collection - 3D Display",
+                "Minion Dance - Holographic Pyramid Display"
+        };
+
+        for (int i = 0; i < titles.length; i++) {
+            final String id = "cult-" + (300 + i);
+            final String slug = generateSlugFromTitle(titles[i]);
+
+            // Select video URL and thumbnail with appropriate offset
+            final int videoIndex = (i + 11) % HOLOGRAM_VIDEO_URLS.size(); // Start from 11th video
+            final String videoUrl = HOLOGRAM_VIDEO_URLS.get(videoIndex);
+            final String thumbnail = HOLOGRAM_THUMBNAIL_URLS.get(videoIndex);
+
+            videos.add(VideoDetail.builder()
+                    .id(id)
+                    .slug(slug)
+                    .title(titles[i])
+                    .thumbnail(thumbnail)
+                    .videoUrl(videoUrl)
+                    .category(categoryRepo.findById("culture"))
+                    .tags(generateDynamicTags(titles[i], i, "culture"))
+                    .likeCount(100 + random.nextInt(1500))
+                    .qaContent(CULTURE_QA_SETS.get(i % CULTURE_QA_SETS.size()))
+                    .relatedVideos(new ArrayList<>()) // Will be populated later
+                    .createdAt(getRandomCreationDate().toString())
+                    .build());
+        }
+
+        return videos;
+    }
+
+    // These tag builder methods have been replaced by the more dynamic
+    // generateDynamicTags method
 
     /**
      * Build a tag object
