@@ -68,6 +68,17 @@ public class RecommendationRepositoryImpl {
         }
     }
 
+    /**
+     * Get video recommendations based on the current video ID.
+     * If the current video exists, returns related videos using SLM service.
+     * If not found, returns popular videos.
+     *
+     * @param request RecommendationRequest containing user, category, and current
+     *                video ID
+     * @param limit   Maximum number of recommendations to return
+     * @return RecommendationResponse containing a list of recommended VideoCard
+     *         objects
+     */
     private RecommendationResponse getVideoRecommendations(final RecommendationRequest request, final int limit) {
         final Optional<VideoMetadata> currentVideoOpt = dataProvider.getVideoById(request.getCurrentId());
 
@@ -232,6 +243,16 @@ public class RecommendationRepositoryImpl {
             }
         }
 
+        final String difficulty;
+        if (diy.getDifficulty() == null) {
+            difficulty = "Medium";
+        } else {
+            switch (diy.getDifficulty()) {
+                case 1 -> difficulty = "Easy";
+                case 2 -> difficulty = "Medium";
+                default -> difficulty = "Hard";
+            }
+        }
         return DiyCard.builder()
                 .id(diy.getDiyId())
                 .slug("diy-" + diy.getDiyId()) // Generate slug from ID
@@ -240,9 +261,7 @@ public class RecommendationRepositoryImpl {
                 .summary(diy.getDescription())
                 .stepCount(5) // Hardcoded for now
                 .estimatedTime("30min") // Hardcoded for now
-                .difficulty(diy.getDifficulty() != null
-                        ? (diy.getDifficulty() == 1 ? "Easy" : diy.getDifficulty() == 2 ? "Medium" : "Hard")
-                        : "Medium")
+                .difficulty(difficulty)
                 .tags(tags)
                 .likeCount(diy.getLikeCount() != null ? diy.getLikeCount() : 0)
                 .similarityScore(similarityScore)
