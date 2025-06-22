@@ -11,8 +11,8 @@ import com.betonamura.recommend.config.RecommendationProperties;
 import com.betonamura.recommend.data.DataProvider;
 import com.betonamura.recommend.data.UserHistoryData;
 import com.betonamura.recommend.data.UserInteractionData;
-import com.betonamura.recommend.service.SlmService;
-import com.betonamura.recommend.service.impl.SlmServiceImpl;
+import com.betonamura.recommend.repository.SlmRepository;
+import com.betonamura.recommend.repository.SlmRepositoryImpl;
 
 /**
  * Test configuration to disable database-related auto-configuration.
@@ -59,8 +59,8 @@ public class TestConfig {
     }
 
     @Bean
-    public SlmService slmService(RecommendationProperties properties, DataProvider dataProvider,
+    public SlmRepository slmService(RecommendationProperties properties, DataProvider dataProvider,
             UserHistoryData userHistoryData) {
-        return new SlmServiceImpl(properties, dataProvider, userHistoryData);
+        return new SlmRepositoryImpl(properties, dataProvider, userHistoryData);
     }
 }

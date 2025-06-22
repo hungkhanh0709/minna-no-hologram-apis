@@ -1159,3 +1159,39 @@ This generated password is for development use only. Your security configuration
 2025-06-22 00:54:24 [http-nio-8081-exec-1] INFO  c.b.r.s.i.RecommendationServiceImpl - Generating recommendations for category: diy, current ID: diy-1
 2025-06-22 00:54:27 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
 2025-06-22 00:54:27 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-22 17:26:55 [main] INFO  c.b.recommend.RecommendApplication - Starting RecommendApplication using Java 17.0.15 with PID 42560 (/Users/khanhto/Documents/Projects/TechWeek2025/minna-no-hologram-apis/minna-no-hologram-recommend/build/classes/java/main started by khanhto in /Users/khanhto/Documents/Projects/TechWeek2025/minna-no-hologram-apis/minna-no-hologram-recommend)
+2025-06-22 17:26:55 [main] DEBUG c.b.recommend.RecommendApplication - Running with Spring Boot v3.4.6, Spring v6.2.7
+2025-06-22 17:26:55 [main] INFO  c.b.recommend.RecommendApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-22 17:26:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2025-06-22 17:26:55 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-22 17:26:55 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-22 17:26:55 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-06-22 17:26:55 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 313 ms
+2025-06-22 17:26:55 [main] INFO  c.b.r.data.UserInteractionData - Initialized user interactions data with 10 users
+2025-06-22 17:26:55 [main] INFO  c.b.recommend.data.UserHistoryData - Initialized user history data with 10 users
+2025-06-22 17:26:55 [main] INFO  c.b.r.repository.SlmRepositoryImpl - Initializing simulated recommendation model: distilbert-base-uncased
+2025-06-22 17:26:55 [main] INFO  c.b.r.repository.SlmRepositoryImpl - Model initialization completed
+2025-06-22 17:26:56 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 55bf95a6-c99e-4499-ba0e-6717d861d638
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-06-22 17:26:56 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-06-22 17:26:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/api'
+2025-06-22 17:26:56 [main] INFO  c.b.recommend.RecommendApplication - Started RecommendApplication in 0.657 seconds (process running for 0.736)
+2025-06-22 17:29:39 [http-nio-8081-exec-2] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-22 17:29:39 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-22 17:29:39 [http-nio-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-06-22 17:29:39 [http-nio-8081-exec-2] WARN  c.b.r.c.RecommendationController - Validation failed: Category ID is required (must be 'video' or 'diy')
+2025-06-22 17:30:10 [http-nio-8081-exec-4] WARN  c.b.r.c.RecommendationController - Validation failed: Category ID is required (must be 'video' or 'diy')
+2025-06-22 17:30:18 [http-nio-8081-exec-6] WARN  c.b.r.c.RecommendationController - Validation failed: Current ID is required
+2025-06-22 17:30:37 [http-nio-8081-exec-8] WARN  c.b.r.c.RecommendationController - Validation failed: Category ID is required (must be 'video' or 'diy')
+2025-06-22 17:30:44 [http-nio-8081-exec-9] WARN  c.b.r.c.RecommendationController - Validation failed: Current ID is required
+2025-06-22 17:31:04 [http-nio-8081-exec-2] WARN  c.b.r.c.RecommendationController - Validation failed: Category ID is required (must be 'video' or 'diy')
+2025-06-22 17:31:10 [http-nio-8081-exec-4] WARN  c.b.r.c.RecommendationController - Validation failed: Current ID is required
+2025-06-22 17:31:27 [http-nio-8081-exec-6] WARN  c.b.r.c.RecommendationController - Validation failed: Current ID is required
+2025-06-22 17:32:10 [http-nio-8081-exec-8] INFO  c.b.r.r.RecommendationRepositoryImpl - Generating recommendations for category: video, current ID: "aaa"
+2025-06-22 17:32:25 [http-nio-8081-exec-10] INFO  c.b.r.r.RecommendationRepositoryImpl - Generating recommendations for category: video, current ID: "aaa"
+2025-06-22 17:32:43 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-22 17:32:43 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete

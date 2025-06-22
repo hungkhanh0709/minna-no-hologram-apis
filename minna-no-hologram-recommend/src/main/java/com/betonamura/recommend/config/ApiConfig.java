@@ -13,6 +13,6 @@ public class ApiConfig {
     public static final String RECOMMENDATIONS = API_BASE + "/recommendations";
 
     // Default limits and parameters
-    public static final int DEFAULT_RECOMMENDATION_LIMIT = 10;
-    public static final int MAX_RECOMMENDATION_LIMIT = 50;
+    public static final int DEFAULT_RECOMMENDATION_LIMIT = 2;
+    public static final int MAX_RECOMMENDATION_LIMIT = 10;
 }

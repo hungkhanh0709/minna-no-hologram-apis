@@ -20,13 +20,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RecommendationRequest {
 
-    @NotBlank(message = "Category ID is required (must be 'video' or 'diy')")
+    private static final int DEFAULT_LIMIT = 10;
+    private static final int MIN_LIMIT = 1;
+    private static final int MAX_LIMIT = 50;
+
+    private static final String CATEGORY_ID_REQUIRED_MSG = "Category ID is required (must be 'video' or 'diy')";
+    private static final String CURRENT_ID_REQUIRED_MSG = "Current ID is required";
+    private static final String LIMIT_MIN_MSG = "Limit must be at least " + MIN_LIMIT;
+    private static final String LIMIT_MAX_MSG = "Limit cannot exceed " + MAX_LIMIT;
+
+    private String userUniqueId;
+
+    @NotBlank(message = CATEGORY_ID_REQUIRED_MSG)
     private String categoryId;
 
-    @NotBlank(message = "Current ID is required")
+    @NotBlank(message = CURRENT_ID_REQUIRED_MSG)
     private String currentId;
 
-    @Min(value = 1, message = "Limit must be at least 1")
-    @Max(value = 50, message = "Limit cannot exceed 50")
-    private Integer limit = 10;
+    @Min(value = MIN_LIMIT, message = LIMIT_MIN_MSG)
+    @Max(value = MAX_LIMIT, message = LIMIT_MAX_MSG)
+    private Integer limit = DEFAULT_LIMIT;
 }

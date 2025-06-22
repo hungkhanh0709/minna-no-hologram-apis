@@ -1,4 +1,4 @@
-package com.betonamura.recommend.service.impl;
+package com.betonamura.recommend.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,6 @@ import com.betonamura.recommend.data.DataProvider;
 import com.betonamura.recommend.data.UserHistoryData;
 import com.betonamura.recommend.domain.user.UserHistory;
 import com.betonamura.recommend.domain.video.VideoMetadata;
-import com.betonamura.recommend.service.SlmService;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SlmServiceImpl implements SlmService {
+public class SlmRepositoryImpl implements SlmRepository {
 
     private final RecommendationProperties properties;
     private final DataProvider dataProvider;

@@ -34,7 +34,8 @@ import com.betonamura.recommend.domain.user.UserHistory;
 import com.betonamura.recommend.domain.user.UserInteraction;
 import com.betonamura.recommend.domain.video.VideoCard;
 import com.betonamura.recommend.domain.video.VideoMetadata;
-import com.betonamura.recommend.service.impl.RecommendationServiceImpl;
+import com.betonamura.recommend.repository.RecommendationRepositoryImpl;
+import com.betonamura.recommend.repository.SlmRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class RecommendationServiceTest {
@@ -49,10 +50,10 @@ public class RecommendationServiceTest {
         private UserInteractionData userInteractionData;
 
         @Mock
-        private SlmService slmService;
+        private SlmRepository slmService;
 
         @InjectMocks
-        private RecommendationServiceImpl recommendationService;
+        private RecommendationRepositoryImpl recommendationService;
 
         private List<UserHistory> mockUserHistory;
         private List<VideoMetadata> mockVideos;
