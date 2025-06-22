@@ -1,0 +1,34 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: minna-no-hologram-recommend-test
+  main:
+    allow-bean-definition-overriding: true
+
+  # Disable JPA
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+
+# API configuration
+api:
+  base-path: /api/v1
+  recommendations-path: /recommendations
+  feedback-path: /feedback
+
+# Recommendation settings
+recommendation:
+  default-limit: 10
+  model:
+    name: test-model
+    max-length: 128
+    batch-size: 16
+  cache:
+    ttl-minutes: 5
+    max-size: 100
