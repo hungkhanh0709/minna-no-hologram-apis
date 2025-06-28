@@ -1,6 +1,6 @@
 spring:
   application:
-    name: hologram
+    name: minna-no-hologram-bff
   output:
     ansi:
       enabled: detect # Auto-detect console capabilities
