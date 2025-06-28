@@ -1,7 +1,4 @@
-# fly.toml app configuration file generated for minna-no-hologram-apis on 2025-06-28T03:25:15Z
-#
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
 
 app = 'minna-no-hologram-apis'
 primary_region = 'sin'

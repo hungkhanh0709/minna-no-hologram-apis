@@ -1,7 +1,4 @@
-# fly.toml app configuration file generated for minna-no-hologram-recommend on 2025-06-28T12:01:16+07:00
-#
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
 
 app = 'minna-no-hologram-recommend'
 primary_region = 'sin'
