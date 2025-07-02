@@ -133,6 +133,7 @@ public class VideoRepository {
                                 .slug(videoDetail.getSlug())
                                 .title(videoDetail.getTitle())
                                 .thumbnail(videoDetail.getThumbnail())
+                                .summary(videoDetail.getSummary())
                                 .videoUrl(videoDetail.getVideoUrl())
                                 .category(videoDetail.getCategory())
                                 .tags(videoDetail.getTags())
