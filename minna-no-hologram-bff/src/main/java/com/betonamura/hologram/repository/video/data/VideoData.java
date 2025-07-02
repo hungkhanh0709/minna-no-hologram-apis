@@ -376,6 +376,73 @@ public class VideoData {
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
+                // culture
+                i++;
+                title = "Love Heart";
+                videos.add(VideoDetail.builder()
+                                .id(String.valueOf(videos.size() + i))
+                                .slug(generateSlugFromTitle(title))
+                                .title(title)
+                                .thumbnail("https://img.freepik.com/free-vector/vector-realistic-square-banner-love-happy-valentines-background-with-heart-shapes_134830-2413.jpg")
+                                .summary("Experience the universal symbol of love in this mesmerizing holographic display. Watch as three-dimensional hearts pulse, transform, and dance through space in a celebration of human connection. This immersive hologram explores cultural interpretations of love across different societies, revealing how this powerful emotion transcends boundaries through one simple, recognizable symbol that resonates across continents and generations.")
+                                .videoUrl("https://www.youtube.com/embed/zzjqYbdSgxE?si=LpqN2vM8xKRdCyE7")
+                                .category(categoryRepo.findById("culture"))
+                                .tags(List.of(
+                                                buildTag("culture", "Culture"),
+                                                buildTag("japan", "Japan")))
+                                .likeCount(random.nextInt(1500))
+                                .qaContent(List.of(
+                                                new VideoQAItem("Master, why is the heart shape universally recognized as a symbol of love?",
+                                                                "Fascinating question! The heart symbol actually dates back to the 13th century, though it bears little resemblance to an actual human heart. Some scholars believe it originated from the shape of ivy leaves associated with fidelity, while others trace it to simplified depictions of female forms. What's remarkable is how this symbol transcended cultures - our hologram shows variations from Japanese origami hearts to Nordic heart knots, all instantly recognizable across language barriers.",
+                                                                "https://parade.com/.image/t_share/MTkwNTgxNDY1MzcxMTkzMjQ4/valentines-day-hearts-gif.gif"),
+                                                new VideoQAItem("How do different cultures express love through symbols in the hologram?",
+                                                                "Excellent observation! Our hologram shows how diverse cultures use heart imagery differently. Notice the Japanese section featuring intricately folded paper hearts reflecting precision and mindfulness. In contrast, the Latin American sequence shows vibrant, passionate hearts inspired by sacred heart imagery. The Scandinavian portion displays hearts woven into complex knot patterns symbolizing eternal bonds. Each culture infuses the basic heart shape with unique aesthetic and philosophical traditions."),
+                                                new VideoQAItem("Why does the holographic heart seem to pulse with light?",
+                                                                "The pulsing light mimics the beating of a real human heart - the source of our life force! This rhythmic pulsation appears in love symbolism across many traditions. In the hologram, we've synchronized the light pulses to 72 beats per minute - the average resting heart rate of someone in love. This subtle animation creates an emotional connection with viewers, as our own hearts tend to synchronize with rhythms we observe.",
+                                                                "https://media1.tenor.com/m/lDVdm5dM3hAAAAAC/hearts-floating.gif"),
+                                                new VideoQAItem("Master, what does the changing color of the hearts represent?",
+                                                                "The color transitions reflect how love itself transforms! The red represents passionate love - what Greeks called 'eros.' As it shifts to pink, it symbolizes affectionate love, or 'philia.' The gold phase represents enduring, mature love. Blue represents the compassionate 'agape' love that extends beyond personal relationships. These color transitions show that love isn't static but evolves as relationships and understanding deepen."),
+                                                new VideoQAItem("How do modern technologies express love differently from traditional symbols?",
+                                                                "In our digital age, love expression has evolved dramatically! The hologram shows how the heart emoji - sent over 10 billion times daily worldwide - has become a modern hieroglyph. Yet humans still crave physical expressions of love, which is why holographic hearts feel more satisfying than flat images. The technology itself reflects our desire to make emotions tangible. Notice how the hologram creates hearts that feel present in your space - technology serving our timeless need for connection.",
+                                                                "https://blog.emojipedia.org/content/images/2019/04/top-10-hearts-emojipedia-2019-1.jpg")))
+                                .relatedVideos(new ArrayList<>())
+                                .createdAt(getRandomCreationDate().toString())
+                                .build());
+
+                // history
+                i++;
+                title = "Ancient Egypt Pyramid Construction";
+                videos.add(VideoDetail.builder()
+                                .id(String.valueOf(videos.size() + i))
+                                .slug(generateSlugFromTitle(title))
+                                .title(title)
+                                .thumbnail("https://humansofdata.atlan.com/wp-content/uploads/2019/08/How-to-feed-10000-Pyramid-Builders-in-Ancient-Egypt-catering-arrangements-in-Giza-revealed.jpg")
+                                .summary("Journey back in time to witness the extraordinary construction of the Great Pyramids of Giza in this revolutionary holographic experience. Watch as thousands of ancient Egyptian workers quarry, transport, and precisely position massive stone blocks using ingenious techniques that still baffle modern engineers. This immersive 3D recreation brings to life one of humanity's greatest architectural achievements, revealing the remarkable skills and organizational prowess of ancient civilization.")
+                                .videoUrl("https://www.youtube.com/embed/e5DOApUtf7M?si=LV3OwpYTadKB1Nfqxx")
+                                .category(categoryRepo.findById("history"))
+                                .tags(List.of(
+                                                buildTag("egypt", "Egypt"),
+                                                buildTag("history", "History"),
+                                                buildTag("architecture", "Architecture")))
+                                .likeCount(random.nextInt(1500))
+                                .qaContent(List.of(
+                                                new VideoQAItem("Master, how did ancient Egyptians move such massive stones without modern technology?",
+                                                                "Remarkable question! The hologram demonstrates several leading theories: they likely used sleds with wetted sand to reduce friction, combined with lever systems and ramps. Recent archaeological evidence suggests they had sophisticated knowledge of physics - notice in the hologram how they used counterweights and pivot points to multiply human strength. They could move 2.5-ton blocks with teams of about 20 workers using these ingenious methods!",
+                                                                "https://www.ancient-origins.net/sites/default/files/field/image/Moving-stone-blocks.jpg"),
+                                                new VideoQAItem("Why were the pyramids built with such precise astronomical alignment?",
+                                                                "The Egyptians possessed extraordinary astronomical knowledge! The Great Pyramid's sides are aligned to the cardinal directions with an accuracy of 0.05 degrees - remarkable even by modern standards. The hologram shows how they used stars and the sun's shadows for alignment. This astronomical precision reflected their belief that pyramids were cosmic machines connecting the pharaoh to the heavens, ensuring his successful journey to the afterlife."),
+                                                new VideoQAItem("How long did it take to build the Great Pyramid of Giza?",
+                                                                "Archaeological evidence suggests about 20 years during the reign of Pharaoh Khufu (around 2560 BCE). The hologram shows how this was possible: contrary to older myths, the workers weren't slaves but skilled laborers and farmers who worked during flooding seasons when they couldn't farm. At peak construction, approximately 20,000-30,000 workers were organized into highly specialized teams with remarkable efficiency - truly one of history's greatest project management achievements!",
+                                                                "https://cdn.mos.cms.futurecdn.net/nFahFN5puiJG6CzPy4hT6S-1200-80.jpg"),
+                                                new VideoQAItem("Master, how did they achieve such perfect precision in cutting and placing the stones?",
+                                                                "Their precision was extraordinary! The core limestone blocks were fitted with joints averaging just 0.5mm - thinner than a credit card! The hologram shows their copper tools, abrasive sand techniques, and water leveling methods. They used ingenious geometry with knotted ropes to create perfect right angles and level surfaces. What's most impressive is their quality control system - note how in the hologram, specialized inspectors checked each stone's dimensions before approval."),
+                                                new VideoQAItem("What did the pyramids look like when they were first completed?",
+                                                                "Very different from today! The hologram accurately shows their original appearance: covered in polished white limestone casing stones that made them gleam blindingly in the sunlight. The capstone was likely plated with gold or electrum (gold-silver alloy). These smooth outer stones were later removed for other buildings. Imagine them as massive, perfect white triangles reflecting the Egyptian sun - they must have seemed like mountains created by gods rather than human hands!",
+                                                                "https://www.sciencealert.com/images/2023-03/processed/WhiteTriangularPyramidWithGoldCapstone_1024.jpg")))
+                                .relatedVideos(new ArrayList<>())
+                                .createdAt(getRandomCreationDate().toString())
+                                .build());
+
                 // Blooming Flowers
                 i++;
                 title = "Blooming Flowers";
@@ -595,6 +662,40 @@ public class VideoData {
                                                 new VideoQAItem("Can these geometric patterns predict natural phenomena?",
                                                                 "Absolutely! Nature follows geometric principles everywhere - from the spiral of galaxies to the branching of trees to the formation of crystals. The morphing patterns in our hologram demonstrate mathematical rules that govern how things grow, flow, and organize in the natural world. Mathematics is nature's blueprint!")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
+                                .createdAt(getRandomCreationDate().toString())
+                                .build());
+
+                // Apollo 11 Moon Landing
+                i++;
+                title = "Apollo 11 Moon Landing";
+                videos.add(VideoDetail.builder()
+                                .id(String.valueOf(videos.size() + i))
+                                .slug(generateSlugFromTitle(title))
+                                .title(title)
+                                .thumbnail("https://img.youtube.com/vi/5DZ6D70m0pU/hqdefault.jpg")
+                                .summary("Relive humanity's greatest adventure with this breathtaking holographic recreation of the Apollo 11 moon landing. Experience the tension of Eagle's descent, the historic first steps on lunar soil, and the groundbreaking scientific work conducted on the lunar surface. This immersive 3D hologram, created from NASA archives and cutting-edge visualization technology, allows viewers to witness this pivotal moment in human history from perspectives never before possible.")
+                                .videoUrl("https://www.youtube.com/embed/5DZ6D70m0pU?si=gAFKSnwRYGdYuFkT")
+                                .category(categoryRepo.findById("history"))
+                                .tags(List.of(
+                                                buildTag("space", "Space"),
+                                                buildTag("history", "History"),
+                                                buildTag("moon", "Moon")))
+                                .likeCount(random.nextInt(1500))
+                                .qaContent(List.of(
+                                                new VideoQAItem("Master, how did they navigate to the Moon with such limited computer technology?",
+                                                                "Ingenious question! The Apollo Guidance Computer had just 64 kilobytes of memory and processing power thousands of times weaker than a modern smartphone! Yet it performed critical calculations while astronauts used sextants for celestial navigation - similar to ancient sailors but in space! The hologram shows how they constantly cross-checked computer data with manual calculations. Their navigational precision was remarkable - hitting a target 240,000 miles away with accuracy equivalent to firing a rifle from New York and hitting a coin in Los Angeles!",
+                                                                "https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTc0NTg1MTQ2NTY4MTQwMzAz/nasa-apollo-11-gettyimages-1156289624.jpg"),
+                                                new VideoQAItem("Why was landing on the Moon so dangerous?",
+                                                                "The landing was the mission's most perilous phase! Notice in the hologram how the Lunar Module had to descend with limited fuel, no practice runs, and on terrain they'd only seen from orbit. When their computer overloaded and alarms sounded, Armstrong had to manually pilot to avoid a boulder field. They landed with just 25 seconds of fuel remaining! One mistake meant either crashing or being stranded forever, with no possibility of rescue - a level of risk almost unimaginable in today's space missions."),
+                                                new VideoQAItem("How did the astronauts survive such extreme temperatures on the Moon?",
+                                                                "Brilliant engineering! The hologram shows their multi-layered spacesuits which were technological marvels. The Moon experiences temperature swings from +250°F in sunlight to -250°F in shadow! The suits contained water cooling systems, reflective outer layers, and insulation. Most ingenious was the portable life support backpack - a miniature spacecraft providing oxygen, removing carbon dioxide, and maintaining pressure while being light enough for lunar gravity. It was essentially a spacecraft you could wear!",
+                                                                "https://www.nasa.gov/wp-content/uploads/2023/03/apollo11.jpg"),
+                                                new VideoQAItem("Master, what scientific discoveries did they make during their brief time on the Moon?",
+                                                                "In just 21 hours on the surface, they revolutionized our understanding of cosmic history! The hologram shows their sample collection - they gathered 47.5 pounds of moon rocks ranging from 3.7 to 4.5 billion years old, older than 99.9% of Earth rocks which have been recycled through plate tectonics. These samples revealed the Moon likely formed from debris after a Mars-sized body collided with early Earth. They also deployed seismic instruments that detected thousands of moonquakes, helping map the lunar interior."),
+                                                new VideoQAItem("How did the Apollo missions change humanity's perspective?",
+                                                                "Profoundly! Beyond the technological triumph, Apollo gave us the 'Earthrise' and 'Blue Marble' photographs - the first complete views of our planet as a fragile oasis in space. The hologram shows this perspective that astronauts experienced: seeing Earth as a borderless, unified world. This cosmic viewpoint helped inspire the environmental movement and a new consciousness of Earth as a single, precious ecosystem. As astronaut Jim Lovell said: 'We went to the Moon as technicians; we returned as humanitarians.'",
+                                                                "https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/AS11-40-5903HR.jpg")))
+                                .relatedVideos(new ArrayList<>())
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
