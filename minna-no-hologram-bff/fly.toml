@@ -12,10 +12,6 @@ primary_region = 'sin'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
-  concurrency = {type = "connections", hard_limit = 25, soft_limit = 20}
-
-  [[http_service.concurrency.hard_limit_exempt_ips]]
-    ips = []
 
 [checks]
   [checks.health]
@@ -28,7 +24,7 @@ primary_region = 'sin'
     path = "/actuator/health"
 
 [[vm]]
-  size = 'performance-1x'
-  memory = '1gb'
-  cpu_kind = 'performance'
+  size = 'shared-cpu-1x'
+  memory = '512mb'
+  cpu_kind = 'shared'
   cpus = 1
