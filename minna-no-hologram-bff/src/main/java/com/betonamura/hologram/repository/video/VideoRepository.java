@@ -152,8 +152,11 @@ public class VideoRepository {
          */
         private List<VideoCard> getRelatedVideos(final String currentId, final String cagegoryId) {
                 // Get recommended videos from the recommendation service
-                List<VideoCard> relatedVideos = recommendationRepository.getRecommendedVideos(
-                                currentId, DEFAULT_RELATED_VIDEOS);
+                // List<VideoCard> relatedVideos =
+                // recommendationRepository.getRecommendedVideos(
+                // currentId, DEFAULT_RELATED_VIDEOS);
+
+                List<VideoCard> relatedVideos = new ArrayList<>();
 
                 // If recommendation service fails, get videos of the same category
                 if (ObjectUtils.isEmpty(relatedVideos)) {
