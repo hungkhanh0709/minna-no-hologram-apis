@@ -312,147 +312,108 @@ public class VideoData {
         private static List<VideoDetail> createVideos() {
                 final List<VideoDetail> videos = new ArrayList<>();
 
-                // Jellyfish hologram video
                 int i = 1;
-                String title = "Jellyfish";
+                String title = "Earth, Globe, Turning";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://www.nhm.ac.uk/content/dam/nhm-www/discover/jellyfish/moon-jellyfish-aurelia-aurita-floating-in-the-ocean-two-column.jpg.thumb.768.768.png")
-                                .summary("Dive into the ethereal world of jellyfish with this mesmerizing holographic experience. Watch as these graceful marine creatures float and pulse through 3D space, showcasing their translucent bells, flowing tentacles, and bioluminescent beauty. This hologram captures the hypnotic dance of jellyfish in their natural aquatic environment, making you feel like you're swimming alongside these ancient ocean dwellers.")
-                                .videoUrl("https://www.youtube.com/embed/BgUb7R9Tur0?si=XUsGmM2mFdHDGyw_")
+                                .thumbnail("https://cdn.pixabay.com/video/2017/09/27/12226-236371350_tiny.jpg")
+                                .summary("Marvel at our beautiful blue planet with this stunning holographic representation of Earth. Watch as the globe rotates majestically in 3D space, showcasing continents, oceans, and atmospheric patterns in breathtaking detail. This immersive hologram brings our world to life, allowing viewers to experience the awe-inspiring perspective astronauts feel when gazing upon our home from space.")
+                                .videoUrl("https://cdn.pixabay.com/video/2017/09/27/12226-236371350_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
-                                                buildTag("fish", "Fish"),
-                                                buildTag("biology", "Biology")))
+                                                buildTag("earth", "Earth"),
+                                                buildTag("geography", "Geography"),
+                                                buildTag("planet", "Planet"),
+                                                buildTag("hologram", "Hologram")))
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
-                                                new VideoQAItem("Master, what makes jellyfish glow in the hologram?",
-                                                                "Ah, excellent question! Jellyfish produce light through bioluminescence - a chemical reaction in their bodies that creates light without heat. In our hologram, we've enhanced this natural glow to show how they use this light to communicate, defend themselves, or attract prey in the deep ocean."),
-                                                new VideoQAItem("Why do jellyfish move so gracefully through the water?",
-                                                                "Jellyfish are masterfully designed by nature! They contract their bell-shaped body to push water out, which propels them forward. Their graceful movement is actually very efficient - they use 48% less energy than other swimming animals. Our hologram captures this fluid motion in three dimensions.",
-                                                                "https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/jellyfish_ver_1.jpg"),
-                                                new VideoQAItem("Are jellyfish really fish, Master?",
-                                                                "Great observation! Despite their name, jellyfish are not fish at all. They're cnidarians - simple animals without brains, hearts, or blood. They've existed for over 500 million years, making them older than dinosaurs! Our hologram shows their simple but effective body structure."),
-                                                new VideoQAItem("How do jellyfish eat without a mouth?",
-                                                                "Fascinating question! Jellyfish have a single opening that serves as both mouth and anus. They capture prey with their stinging tentacles, then push the food into their gastrovascular cavity. Watch carefully in the hologram - you can see how their tentacles move to catch microscopic prey.",
-                                                                "https://s3.eu-west-1.amazonaws.com/media.mcsuk.org/images/RS31885_image-131-lpr.width-765.jpg"),
-                                                new VideoQAItem("Can jellyfish really live forever?",
-                                                                "Some can! The immortal jellyfish, Turritopsis dohrnii, can reverse its aging process and return to its juvenile state. While most jellyfish live weeks to months, this species has achieved biological immortality. Our hologram demonstrates the life cycle that makes this possible.")))
+                                                new VideoQAItem("Master, why does Earth look so blue in the hologram?",
+                                                                "Excellent observation! Earth appears blue because over 70% of its surface is covered by oceans. When sunlight hits our planet, the water absorbs red wavelengths but reflects blue light back into space. Our hologram enhances this natural blue color slightly to highlight the beautiful contrast between land and water masses, just as astronauts see it from space."),
+                                                new VideoQAItem("How accurate are the cloud patterns in this Earth hologram?",
+                                                                "Our hologram uses real-time satellite data to reproduce actual cloud formations! These dynamic patterns show weather systems as they naturally form and dissipate. Watch carefully and you might spot cyclones, storm fronts, and even the Intertropical Convergence Zone where trade winds meet near the equator. The holographic technology allows us to update these patterns every 3 hours."),
+                                                new VideoQAItem("Why does the Earth rotate in that direction, Master?",
+                                                                "The Earth rotates from west to east, which is counterclockwise when viewed from above the North Pole - exactly as shown in our hologram. This rotation is why the sun appears to rise in the east and set in the west. The Earth completes one full rotation every 23 hours, 56 minutes, and 4 seconds, which we've accurately timed in the holographic display."),
+                                                new VideoQAItem("Can we see tectonic plate boundaries in the hologram?",
+                                                                "Indeed! Look closely at the raised topography along coastlines like western South America or the islands of Japan. These elevated areas mark where tectonic plates meet. Our hologram exaggerates vertical relief by 200% to make these boundaries more visible. The most active boundaries are highlighted with subtle pulsing illumination representing earthquake activity."),
+                                                new VideoQAItem("Why do the polar regions look white in the hologram?",
+                                                                "The white regions represent ice caps and snow cover at the poles. The Arctic (North Pole) is mostly frozen seawater while Antarctica (South Pole) is a continent covered by ice. Our hologram shows seasonal changes in these ice caps - notice how they expand in their respective winter months. The reflectivity of these white areas plays a crucial role in regulating Earth's temperature by bouncing solar radiation back into space.")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Hummingbird
                 i++;
-                title = "Hummingbird";
+                title = "Robot, Artificial Intelligence, Technology";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://riosalado.audubon.org/sites/default/files/styles/bean_wysiwyg_full_width/public/elaine_r._wilson_hummingbird.jpg")
-                                .summary("Experience the marvel of hummingbird flight in breathtaking detail through this holographic showcase. Watch these tiny aviators hover, dart, and dance with wings beating up to 80 times per second. This 3D hologram reveals the intricate mechanics of their unique flight patterns, iridescent plumage, and incredible agility that makes them nature's most skilled aerial acrobats.")
-                                .videoUrl("https://www.youtube.com/embed/Uftu0RaIDkw?si=8X4-1eLjUQYhW3ID")
+                                .thumbnail("https://cdn.pixabay.com/video/2023/08/01/174086-850404739_tiny.jpg")
+                                .summary("Step into the future with this cutting-edge holographic display of advanced robotics and artificial intelligence. Watch as humanoid robots move with fluid precision, showcasing the remarkable integration of mechanical engineering and cognitive computing. This 3D hologram demonstrates how modern AI systems process information, make decisions, and interact with their environment, revealing the fascinating technology that's rapidly changing our world.")
+                                .videoUrl("https://cdn.pixabay.com/video/2023/08/01/174086-850404739_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
-                                                buildTag("bird", "Bird"),
-                                                buildTag("biology", "Biology")))
+                                                buildTag("ai", "AI"),
+                                                buildTag("robot", "Robot"),
+                                                buildTag("technology", "Technology"),
+                                                buildTag("future", "Future")))
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
-                                                new VideoQAItem("Master, how can hummingbirds fly backwards?",
-                                                                "Remarkable question! Hummingbirds have a unique wing structure that allows them to rotate their wings in a figure-8 pattern. Unlike other birds that generate lift only on the downstroke, hummingbirds create lift on both down and upstrokes, enabling them to hover, fly backwards, and even upside down!",
-                                                                "https://www.allaboutbirds.org/guide/assets/photo/303878421-480px.jpg"),
-                                                new VideoQAItem("Why do hummingbirds beat their wings so fast?",
-                                                                "Their rapid wingbeats - up to 80 beats per second - are necessary to support their hovering flight and quick maneuvers. Their wings are proportionally smaller than other birds, so they must beat faster to generate enough lift. Our hologram shows this incredible speed in slow motion so you can see each wing movement."),
-                                                new VideoQAItem("How do hummingbirds change colors in the hologram?",
-                                                                "Excellent observation! Hummingbirds have iridescent feathers with microscopic structures that reflect light differently at various angles. As they move in our 3D hologram, you can see how their colors shift from emerald to ruby to gold, just like they do in nature when the light hits them differently."),
-                                                new VideoQAItem("Do hummingbirds really migrate such long distances?",
-                                                                "Absolutely! Despite weighing less than a nickel, some hummingbirds migrate over 3,000 miles. The Ruby-throated Hummingbird flies 500 miles non-stop across the Gulf of Mexico! Their tiny bodies are incredibly efficient, storing fat that doubles their weight before migration."),
-                                                new VideoQAItem("Master, how much nectar do hummingbirds need each day?",
-                                                                "These tiny powerhouses visit 1,000-2,000 flowers daily and consume half their body weight in nectar! They also eat small insects for protein. Their metabolism is so fast that they must eat every 10-15 minutes during daylight hours. Watch closely in the hologram - you might see their feeding behavior!",
-                                                                "https://www.housedigest.com/img/gallery/7-types-of-beautiful-hummingbirds-you-might-find-in-your-backyard/intro-1716748789.jpg")))
+                                                new VideoQAItem("Master, how does the robot in the hologram understand its surroundings?",
+                                                                "Excellent question! The robot uses a combination of sensors - cameras provide vision, LiDAR creates 3D maps of the space, and pressure sensors detect physical contact. The hologram highlights these sensor inputs with colored visual overlays showing how the AI processes this data in real-time, converting raw sensory information into a coherent understanding of its environment."),
+                                                new VideoQAItem("How similar is this AI to human intelligence?",
+                                                                "The AI shown in our hologram is what we call 'narrow AI' - extremely capable in specific tasks but lacking human-like general intelligence. Notice how it performs complex calculations instantaneously but still needs explicit programming for new situations. The neural network visualization in the hologram shows thousands of connections being made, yet it's still fundamentally different from our biological consciousness."),
+                                                new VideoQAItem("Will robots eventually look exactly like humans?",
+                                                                "While some robots are designed to appear human-like, many future robots will likely maintain a distinct mechanical appearance. Our hologram shows both approaches - the humanoid design allows interaction in human-centered environments, while the more mechanical designs prioritize function over form. The translucent elements in the hologram reveal the internal mechanisms that would normally be hidden."),
+                                                new VideoQAItem("Master, how do robots learn new tasks?",
+                                                                "Fascinating process! Modern robots use machine learning algorithms where they improve through data and experience rather than explicit programming. In our hologram, you can see the neural network adjusting its connections as the robot attempts a task repeatedly. The glowing pathways represent strengthening connections - similar to how human brains form stronger neural pathways through practice."),
+                                                new VideoQAItem("Can robots really understand emotions?",
+                                                                "Current robots can detect and respond to human emotions, but they don't experience emotions themselves. Our hologram shows a robot analyzing facial expressions, vocal tone, and body language to identify emotional states - notice the probability percentages appearing as it processes these cues. This emotional recognition helps robots interact more naturally with humans, even though they don't share our subjective emotional experiences.")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // culture
                 i++;
-                title = "Love Heart";
+                title = "Economy, Stock Exchange, Bank";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://img.freepik.com/free-vector/vector-realistic-square-banner-love-happy-valentines-background-with-heart-shapes_134830-2413.jpg")
-                                .summary("Experience the universal symbol of love in this mesmerizing holographic display. Watch as three-dimensional hearts pulse, transform, and dance through space in a celebration of human connection. This immersive hologram explores cultural interpretations of love across different societies, revealing how this powerful emotion transcends boundaries through one simple, recognizable symbol that resonates across continents and generations.")
-                                .videoUrl("https://www.youtube.com/embed/zzjqYbdSgxE?si=LpqN2vM8xKRdCyE7")
-                                .category(categoryRepo.findById("culture"))
+                                .thumbnail("https://cdn.pixabay.com/video/2024/03/15/204291-923909616_tiny.jpg")
+                                .summary("Immerse yourself in the dynamic world of global finance through this sophisticated holographic visualization. Watch as market data flows through three-dimensional charts, trading patterns emerge in real-time, and economic indicators interact in complex relationships. This cutting-edge hologram transforms abstract financial concepts into tangible visual representations, revealing the intricate mechanisms that drive our modern economy.")
+                                .videoUrl("https://cdn.pixabay.com/video/2024/03/15/204291-923909616_large.mp4")
+                                .category(categoryRepo.findById("science"))
                                 .tags(List.of(
-                                                buildTag("culture", "Culture"),
-                                                buildTag("japan", "Japan")))
+                                                buildTag("finance", "Finance"),
+                                                buildTag("economy", "Economy"),
+                                                buildTag("technology", "Technology"),
+                                                buildTag("business", "Business")))
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
-                                                new VideoQAItem("Master, why is the heart shape universally recognized as a symbol of love?",
-                                                                "Fascinating question! The heart symbol actually dates back to the 13th century, though it bears little resemblance to an actual human heart. Some scholars believe it originated from the shape of ivy leaves associated with fidelity, while others trace it to simplified depictions of female forms. What's remarkable is how this symbol transcended cultures - our hologram shows variations from Japanese origami hearts to Nordic heart knots, all instantly recognizable across language barriers.",
-                                                                "https://parade.com/.image/t_share/MTkwNTgxNDY1MzcxMTkzMjQ4/valentines-day-hearts-gif.gif"),
-                                                new VideoQAItem("How do different cultures express love through symbols in the hologram?",
-                                                                "Excellent observation! Our hologram shows how diverse cultures use heart imagery differently. Notice the Japanese section featuring intricately folded paper hearts reflecting precision and mindfulness. In contrast, the Latin American sequence shows vibrant, passionate hearts inspired by sacred heart imagery. The Scandinavian portion displays hearts woven into complex knot patterns symbolizing eternal bonds. Each culture infuses the basic heart shape with unique aesthetic and philosophical traditions."),
-                                                new VideoQAItem("Why does the holographic heart seem to pulse with light?",
-                                                                "The pulsing light mimics the beating of a real human heart - the source of our life force! This rhythmic pulsation appears in love symbolism across many traditions. In the hologram, we've synchronized the light pulses to 72 beats per minute - the average resting heart rate of someone in love. This subtle animation creates an emotional connection with viewers, as our own hearts tend to synchronize with rhythms we observe.",
-                                                                "https://media1.tenor.com/m/lDVdm5dM3hAAAAAC/hearts-floating.gif"),
-                                                new VideoQAItem("Master, what does the changing color of the hearts represent?",
-                                                                "The color transitions reflect how love itself transforms! The red represents passionate love - what Greeks called 'eros.' As it shifts to pink, it symbolizes affectionate love, or 'philia.' The gold phase represents enduring, mature love. Blue represents the compassionate 'agape' love that extends beyond personal relationships. These color transitions show that love isn't static but evolves as relationships and understanding deepen."),
-                                                new VideoQAItem("How do modern technologies express love differently from traditional symbols?",
-                                                                "In our digital age, love expression has evolved dramatically! The hologram shows how the heart emoji - sent over 10 billion times daily worldwide - has become a modern hieroglyph. Yet humans still crave physical expressions of love, which is why holographic hearts feel more satisfying than flat images. The technology itself reflects our desire to make emotions tangible. Notice how the hologram creates hearts that feel present in your space - technology serving our timeless need for connection.",
-                                                                "https://blog.emojipedia.org/content/images/2019/04/top-10-hearts-emojipedia-2019-1.jpg")))
+                                                new VideoQAItem("Master, what do those rising and falling columns represent in the hologram?",
+                                                                "Excellent observation! Those columns represent stock price movements across different market sectors. The height shows the price value, while the color intensity indicates trading volume. When you see a column rapidly changing color from blue to red, that signals a volatility spike. Our hologram processes real-time market data, allowing you to visualize patterns that would be invisible in traditional 2D charts."),
+                                                new VideoQAItem("How does the hologram show connections between different economic factors?",
+                                                                "The glowing threads connecting various elements visualize correlations between economic indicators. Thicker, brighter lines show stronger relationships - notice how interest rates and housing markets are tightly linked. The hologram calculates these correlations in real-time using advanced machine learning algorithms that identify patterns across thousands of data points from global markets, revealing complex interdependencies that drive economic systems."),
+                                                new VideoQAItem("What causes those wave patterns flowing through the financial districts?",
+                                                                "Those waves represent capital flows between different global financial centers! The direction shows money movement, while wave height indicates volume. When you see large waves surging toward emerging markets, that signals significant investment shifts. Our hologram uses data from central banks and financial institutions to visualize these normally invisible currents that reshape the global economy daily."),
+                                                new VideoQAItem("Master, how can the hologram predict market movements?",
+                                                                "The translucent projections extending from current data points show probability fields of future scenarios, not exact predictions. The hologram analyzes historical patterns, current conditions, and sentiment indicators to generate these probability clouds. Brighter areas represent more likely outcomes. It's important to understand these are statistical projections that become less certain the further they extend - the system calculates confidence intervals that widen with time."),
+                                                new VideoQAItem("Why does the banking sector appear as a foundation in the hologram structure?",
+                                                                "Insightful question! The architectural metaphor in our hologram intentionally places banking institutions at the foundation level to illustrate their fundamental role in the financial ecosystem. Notice how they connect to virtually every other element - this represents how banks facilitate capital flows throughout the economy. The structural stability indicators pulsing through these foundations visualize banking system health metrics that underpin overall economic stability.")))
                                 .relatedVideos(new ArrayList<>())
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // history
                 i++;
-                title = "Ancient Egypt Pyramid Construction";
+                title = "Futuristic, Future, Technology";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://humansofdata.atlan.com/wp-content/uploads/2019/08/How-to-feed-10000-Pyramid-Builders-in-Ancient-Egypt-catering-arrangements-in-Giza-revealed.jpg")
-                                .summary("Journey back in time to witness the extraordinary construction of the Great Pyramids of Giza in this revolutionary holographic experience. Watch as thousands of ancient Egyptian workers quarry, transport, and precisely position massive stone blocks using ingenious techniques that still baffle modern engineers. This immersive 3D recreation brings to life one of humanity's greatest architectural achievements, revealing the remarkable skills and organizational prowess of ancient civilization.")
-                                .videoUrl("https://www.youtube.com/embed/e5DOApUtf7M?si=LV3OwpYTadKB1Nfqxx")
-                                .category(categoryRepo.findById("history"))
-                                .tags(List.of(
-                                                buildTag("egypt", "Egypt"),
-                                                buildTag("history", "History"),
-                                                buildTag("architecture", "Architecture")))
-                                .likeCount(random.nextInt(1500))
-                                .qaContent(List.of(
-                                                new VideoQAItem("Master, how did ancient Egyptians move such massive stones without modern technology?",
-                                                                "Remarkable question! The hologram demonstrates several leading theories: they likely used sleds with wetted sand to reduce friction, combined with lever systems and ramps. Recent archaeological evidence suggests they had sophisticated knowledge of physics - notice in the hologram how they used counterweights and pivot points to multiply human strength. They could move 2.5-ton blocks with teams of about 20 workers using these ingenious methods!",
-                                                                "https://www.ancient-origins.net/sites/default/files/field/image/Moving-stone-blocks.jpg"),
-                                                new VideoQAItem("Why were the pyramids built with such precise astronomical alignment?",
-                                                                "The Egyptians possessed extraordinary astronomical knowledge! The Great Pyramid's sides are aligned to the cardinal directions with an accuracy of 0.05 degrees - remarkable even by modern standards. The hologram shows how they used stars and the sun's shadows for alignment. This astronomical precision reflected their belief that pyramids were cosmic machines connecting the pharaoh to the heavens, ensuring his successful journey to the afterlife."),
-                                                new VideoQAItem("How long did it take to build the Great Pyramid of Giza?",
-                                                                "Archaeological evidence suggests about 20 years during the reign of Pharaoh Khufu (around 2560 BCE). The hologram shows how this was possible: contrary to older myths, the workers weren't slaves but skilled laborers and farmers who worked during flooding seasons when they couldn't farm. At peak construction, approximately 20,000-30,000 workers were organized into highly specialized teams with remarkable efficiency - truly one of history's greatest project management achievements!",
-                                                                "https://cdn.mos.cms.futurecdn.net/nFahFN5puiJG6CzPy4hT6S-1200-80.jpg"),
-                                                new VideoQAItem("Master, how did they achieve such perfect precision in cutting and placing the stones?",
-                                                                "Their precision was extraordinary! The core limestone blocks were fitted with joints averaging just 0.5mm - thinner than a credit card! The hologram shows their copper tools, abrasive sand techniques, and water leveling methods. They used ingenious geometry with knotted ropes to create perfect right angles and level surfaces. What's most impressive is their quality control system - note how in the hologram, specialized inspectors checked each stone's dimensions before approval."),
-                                                new VideoQAItem("What did the pyramids look like when they were first completed?",
-                                                                "Very different from today! The hologram accurately shows their original appearance: covered in polished white limestone casing stones that made them gleam blindingly in the sunlight. The capstone was likely plated with gold or electrum (gold-silver alloy). These smooth outer stones were later removed for other buildings. Imagine them as massive, perfect white triangles reflecting the Egyptian sun - they must have seemed like mountains created by gods rather than human hands!",
-                                                                "https://www.sciencealert.com/images/2023-03/processed/WhiteTriangularPyramidWithGoldCapstone_1024.jpg")))
-                                .relatedVideos(new ArrayList<>())
-                                .createdAt(getRandomCreationDate().toString())
-                                .build());
-
-                // Blooming Flowers
-                i++;
-                title = "Blooming Flowers";
-                videos.add(VideoDetail.builder()
-                                .id(String.valueOf(videos.size() + i))
-                                .slug(generateSlugFromTitle(title))
-                                .title(title)
-                                .thumbnail("https://images.immediate.co.uk/production/volatile/sites/10/2024/03/2048x1365-sunflowers-SEO-LI1097451DSF4261-f1aa805.jpg?quality=90&fit=700,466")
+                                .thumbnail("https://cdn.pixabay.com/video/2019/07/27/25567-351374200_tiny.jpg")
                                 .summary("Witness nature's most beautiful transformation through this stunning holographic display of blooming flowers. Watch as buds slowly unfurl their petals, revealing vibrant colors and intricate patterns in mesmerizing detail. This 3D hologram captures the delicate dance of petals as they open, showcasing the miracle of botanical life in a breathtaking visual symphony.")
-                                .videoUrl("https://www.youtube.com/embed/asNoWcrfebk?si=ayq3GUA4jrWwR-EN")
+                                .videoUrl("https://cdn.pixabay.com/video/2019/07/27/25567-351374200_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("hologram", "Hologram"),
@@ -464,27 +425,55 @@ public class VideoData {
                                                 new VideoQAItem("How do flowers know when to open their petals?",
                                                                 "Flowers are incredibly smart! They respond to environmental cues like light, temperature, and humidity. Many flowers have internal biological clocks that tell them the optimal time to open. In our hologram, you can see how the petals respond to these invisible signals, opening in perfect harmony with nature."),
                                                 new VideoQAItem("Why are flowers so colorful in the hologram?",
-                                                                "Excellent observation! Flower colors are nature's advertising - they're designed to attract specific pollinators. Red flowers attract birds, blue and purple attract bees, and white flowers often attract night pollinators like moths. Our 3D hologram enhances these natural colors to show how flowers communicate through their beauty.",
-                                                                "https://cdn.shopify.com/s/files/1/1740/1449/files/RG-Sunflower-1.jpg?v=1631119406"),
+                                                                "Excellent observation! Flower colors are nature's advertising - they're designed to attract specific pollinators. Red flowers attract birds, blue and purple attract bees, and white flowers often attract night pollinators like moths. Our 3D hologram enhances these natural colors to show how flowers communicate through their beauty."),
                                                 new VideoQAItem("Master, do all flowers bloom the same way?",
                                                                 "Not at all! Each flower species has its own unique blooming pattern. Some unfurl slowly like roses, others pop open quickly like poppies, and some bloom in stages like lilies. Our hologram captures these different blooming styles, showing the incredible diversity in how nature creates beauty."),
                                                 new VideoQAItem("Can flowers really predict the weather?",
-                                                                "Indeed they can! Many flowers close their petals before rain or when humidity rises, protecting their pollen and nectar. Some flowers track the sun's movement throughout the day. In our hologram, you can observe these natural behaviors that have helped flowers survive for millions of years.",
-                                                                "https://homegardenandhomestead.com/wp-content/uploads/2022/08/sunflowers-sunglasses.jpeg")))
+                                                                "Indeed they can! Many flowers close their petals before rain or when humidity rises, protecting their pollen and nectar. Some flowers track the sun's movement throughout the day. In our hologram, you can observe these natural behaviors that have helped flowers survive for millions of years.")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Butterfly
                 i++;
-                title = "Butterfly";
+                title = "World, Global, Digital";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://www.insectlore.com/cdn/shop/files/Pinkflatlaycopy_1200x.png?v=1724880310")
+                                .thumbnail("https://cdn.pixabay.com/video/2023/11/14/189046-884476411_tiny.jpg")
+                                .summary("Journey back in time to witness the extraordinary construction of the Great Pyramids of Giza in this revolutionary holographic experience. Watch as thousands of ancient Egyptian workers quarry, transport, and precisely position massive stone blocks using ingenious techniques that still baffle modern engineers. This immersive 3D recreation brings to life one of humanity's greatest architectural achievements, revealing the remarkable skills and organizational prowess of ancient civilization.")
+                                .videoUrl("https://cdn.pixabay.com/video/2023/11/14/189046-884476411_large.mp4")
+                                .category(categoryRepo.findById("history"))
+                                .tags(List.of(
+                                                buildTag("egypt", "Egypt"),
+                                                buildTag("history", "History"),
+                                                buildTag("architecture", "Architecture")))
+                                .likeCount(random.nextInt(1500))
+                                .qaContent(List.of(
+                                                new VideoQAItem("Master, how did ancient Egyptians move such massive stones without modern technology?",
+                                                                "Remarkable question! The hologram demonstrates several leading theories: they likely used sleds with wetted sand to reduce friction, combined with lever systems and ramps. Recent archaeological evidence suggests they had sophisticated knowledge of physics - notice in the hologram how they used counterweights and pivot points to multiply human strength. They could move 2.5-ton blocks with teams of about 20 workers using these ingenious methods!"),
+                                                new VideoQAItem("Why were the pyramids built with such precise astronomical alignment?",
+                                                                "The Egyptians possessed extraordinary astronomical knowledge! The Great Pyramid's sides are aligned to the cardinal directions with an accuracy of 0.05 degrees - remarkable even by modern standards. The hologram shows how they used stars and the sun's shadows for alignment. This astronomical precision reflected their belief that pyramids were cosmic machines connecting the pharaoh to the heavens, ensuring his successful journey to the afterlife."),
+                                                new VideoQAItem("How long did it take to build the Great Pyramid of Giza?",
+                                                                "Archaeological evidence suggests about 20 years during the reign of Pharaoh Khufu (around 2560 BCE). The hologram shows how this was possible: contrary to older myths, the workers weren't slaves but skilled laborers and farmers who worked during flooding seasons when they couldn't farm. At peak construction, approximately 20,000-30,000 workers were organized into highly specialized teams with remarkable efficiency - truly one of history's greatest project management achievements!"),
+                                                new VideoQAItem("Master, how did they achieve such perfect precision in cutting and placing the stones?",
+                                                                "Their precision was extraordinary! The core limestone blocks were fitted with joints averaging just 0.5mm - thinner than a credit card! The hologram shows their copper tools, abrasive sand techniques, and water leveling methods. They used ingenious geometry with knotted ropes to create perfect right angles and level surfaces. What's most impressive is their quality control system - note how in the hologram, specialized inspectors checked each stone's dimensions before approval."),
+                                                new VideoQAItem("What did the pyramids look like when they were first completed?",
+                                                                "Very different from today! The hologram accurately shows their original appearance: covered in polished white limestone casing stones that made them gleam blindingly in the sunlight. The capstone was likely plated with gold or electrum (gold-silver alloy). These smooth outer stones were later removed for other buildings. Imagine them as massive, perfect white triangles reflecting the Egyptian sun - they must have seemed like mountains created by gods rather than human hands!")))
+                                .relatedVideos(new ArrayList<>())
+                                .createdAt(getRandomCreationDate().toString())
+                                .build());
+
+                //
+                i++;
+                title = "Metaverse, Virtual, Space";
+                videos.add(VideoDetail.builder()
+                                .id(String.valueOf(videos.size() + i))
+                                .slug(generateSlugFromTitle(title))
+                                .title(title)
+                                .thumbnail("https://cdn.pixabay.com/video/2022/05/27/118363-714645707_tiny.jpg")
                                 .summary("Experience the magical metamorphosis and graceful flight of butterflies in this enchanting holographic display. Watch as these delicate creatures flutter through 3D space, showcasing their intricate wing patterns, vibrant colors, and ethereal beauty. This hologram captures the essence of transformation and the delicate elegance of one of nature's most beloved insects.")
-                                .videoUrl("https://www.youtube.com/embed/mjgq6koC6J0?si=sgVyRIrVrVP0ZN5D")
+                                .videoUrl("https://cdn.pixabay.com/video/2022/05/27/118363-714645707_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("biology", "Biology"),
@@ -492,31 +481,28 @@ public class VideoData {
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
                                                 new VideoQAItem("Master, how do butterflies get their beautiful colors?",
-                                                                "Wonderful question! Butterfly wings have tiny scales that contain pigments and microscopic structures that reflect light. Some colors come from pigments like melanin, while others are created by light interference - like how soap bubbles shimmer. Our hologram shows how these colors change as the butterfly moves through different angles of light.",
-                                                                "https://imgc.artprintimages.com/img/print/suns-luck-color-butterfly-flying_u-l-pofq920.jpg?artHeight=550&artPerspective=n&artWidth=550&background=fbfbfb"),
+                                                                "Wonderful question! Butterfly wings have tiny scales that contain pigments and microscopic structures that reflect light. Some colors come from pigments like melanin, while others are created by light interference - like how soap bubbles shimmer. Our hologram shows how these colors change as the butterfly moves through different angles of light."),
                                                 new VideoQAItem("Why do butterflies flutter instead of flying straight?",
                                                                 "Great observation! Butterflies' erratic flight pattern is actually a survival strategy - it makes them harder for predators to catch. Their large wings relative to their body weight also make them more susceptible to air currents. In our 3D hologram, you can see how each wing beat creates beautiful, unpredictable movements."),
                                                 new VideoQAItem("How does a caterpillar turn into a butterfly in the hologram?",
                                                                 "That's one of nature's greatest mysteries! Inside the chrysalis, the caterpillar's body completely dissolves except for special groups of cells called imaginal discs, which rebuild into wings, legs, and other butterfly parts. Our hologram demonstrates this incredible transformation process that takes about 2 weeks."),
                                                 new VideoQAItem("Master, why do some butterflies migrate thousands of miles?",
-                                                                "Remarkable, isn't it? Monarch butterflies migrate up to 3,000 miles using the sun as a compass and possibly magnetic fields for navigation. What's amazing is that the butterflies making the return journey have never been there before - they inherit this knowledge genetically! Our hologram shows their graceful flight patterns.",
-                                                                "https://eowilsonfoundation.org/app/uploads/2025/04/shutterstock_2472168933-1024x683.jpg"),
+                                                                "Remarkable, isn't it? Monarch butterflies migrate up to 3,000 miles using the sun as a compass and possibly magnetic fields for navigation. What's amazing is that the butterflies making the return journey have never been there before - they inherit this knowledge genetically! Our hologram shows their graceful flight patterns."),
                                                 new VideoQAItem("Do butterflies really taste with their feet?",
                                                                 "Yes indeed! Butterflies have chemoreceptors on their feet that help them taste potential food sources and identify the right plants for laying eggs. When you see a butterfly land on a flower in our hologram, it's actually 'tasting' to see if it's suitable. They can detect sweetness levels that way!")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Clown Fish
                 i++;
-                title = "Clown Fish";
+                title = "Futuristic, Technology, Digital";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://cdn.mos.cms.futurecdn.net/4UdEs7tTKwLJbxZPUYR3hF-1200-80.jpg")
+                                .thumbnail("https://cdn.pixabay.com/video/2025/04/07/270628_tiny.jpg")
                                 .summary("Dive into the vibrant underwater world of clownfish through this captivating holographic experience. Watch these iconic orange-and-white striped fish as they playfully swim around their sea anemone homes. This 3D hologram showcases their symbiotic relationship with anemones, their territorial behaviors, and the colorful coral reef ecosystem they call home.")
-                                .videoUrl("https://www.youtube.com/embed/9pan7fgDkxY?si=6b0d1a2f8c3e4c5b")
+                                .videoUrl("https://cdn.pixabay.com/video/2025/04/07/270628_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("hologram", "Hologram"),
@@ -525,8 +511,7 @@ public class VideoData {
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
                                                 new VideoQAItem("Master, why don't sea anemones sting clownfish?",
-                                                                "Excellent question! Clownfish have a special protective mucus coating that makes them immune to anemone stings. They gradually build up this immunity by carefully touching the anemone tentacles. It's like having a natural shield! In our hologram, you can see how the clownfish swim fearlessly through the anemone's tentacles.",
-                                                                "https://www.algaebarn.com/wp-content/uploads/2020/10/shutterstock_391864198-scaled.jpg"),
+                                                                "Excellent question! Clownfish have a special protective mucus coating that makes them immune to anemone stings. They gradually build up this immunity by carefully touching the anemone tentacles. It's like having a natural shield! In our hologram, you can see how the clownfish swim fearlessly through the anemone's tentacles."),
                                                 new VideoQAItem("Why are clownfish orange and white striped?",
                                                                 "Great observation! Their bright colors serve multiple purposes - the orange makes them visible to their anemone partners, while the white stripes help them recognize their own species. The bold pattern also confuses predators when they dart in and out of anemone tentacles. Our 3D hologram shows how these colors pop in the coral reef environment."),
                                                 new VideoQAItem("How do clownfish help sea anemones?",
@@ -534,22 +519,20 @@ public class VideoData {
                                                 new VideoQAItem("Master, do all clownfish live in groups?",
                                                                 "Yes, and here's something fascinating - clownfish live in hierarchical groups led by a dominant female! If the female dies, the largest male will actually change into a female to take her place. They're sequential hermaphrodites. Our hologram shows how they interact in their family groups within their anemone territory."),
                                                 new VideoQAItem("Can clownfish survive without anemones?",
-                                                                "While they can survive briefly without anemones, they're much more vulnerable to predators and stress. The anemone provides protection, shelter for eggs, and a territory to defend. In our hologram, you can see how the anemone serves as their safe haven - they rarely venture far from home!",
-                                                                "https://cdn.britannica.com/80/160480-004-10A06884/clown-fish-appearance-anemone.jpg")))
+                                                                "While they can survive briefly without anemones, they're much more vulnerable to predators and stress. The anemone provides protection, shelter for eggs, and a territory to defend. In our hologram, you can see how the anemone serves as their safe haven - they rarely venture far from home!")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Graviton, Proton, Neutron, Elektron Particles
                 i++;
-                title = "Graviton, Proton, Neutron, Elektron Particles";
+                title = "Robot, Artificial Intelligence, Technology";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://cdn1-production-images-kly.akamaized.net/aAjmtMr5Pu6Es1239gGQ3YYyWHI=/800x450/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4620827/original/038926500_1698052322-waves-7854066_1280.jpg")
+                                .thumbnail("https://cdn.pixabay.com/video/2022/08/09/127327-738105507_tiny.jpg")
                                 .summary("Journey into the quantum realm with this fascinating holographic visualization of fundamental particles. Witness gravitons, protons, neutrons, and electrons as they interact in the microscopic world that forms the foundation of all matter. This 3D hologram brings abstract physics concepts to life, showing particle behaviors, interactions, and the forces that govern our universe at its most basic level.")
-                                .videoUrl("https://www.youtube.com/embed/aMmlS29Dz6Q?si=Z_dxopspn8ZaK7Fi")
+                                .videoUrl("https://cdn.pixabay.com/video/2022/08/09/127327-738105507_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("physics", "Physics"),
@@ -570,16 +553,15 @@ public class VideoData {
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Diamond 360 Hologram
                 i++;
-                title = "Diamond 360 degree";
+                title = "Nefertiti, Queen, Egypt";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://4cs.gia.edu/wp-content/uploads/2016/12/GIA_diamond_faceup-hero.jpg")
+                                .thumbnail("https://cdn.pixabay.com/video/2023/08/08/175198-852857858_tiny.jpg")
                                 .summary("Marvel at the breathtaking brilliance of diamonds in this spectacular 360-degree holographic showcase. Watch as light dances through perfectly cut facets, creating rainbow refractions and sparkling fire from every angle. This immersive 3D experience lets you explore diamond anatomy, witness the interplay of light and crystal structure, and appreciate the geometric perfection that makes diamonds the ultimate symbol of beauty and luxury.")
-                                .videoUrl("https://www.youtube.com/embed/YjyyVTek5FE?si=ihLG1bYBL2B4ByY-")
+                                .videoUrl("https://cdn.pixabay.com/video/2023/08/08/175198-852857858_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("hologram", "Hologram"),
@@ -587,8 +569,7 @@ public class VideoData {
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
                                                 new VideoQAItem("Master, what makes diamonds sparkle so brilliantly in the hologram?",
-                                                                "Wonderful question! Diamonds have exceptional optical properties - they bend light more than almost any other material. When light enters a diamond, it bounces around inside due to total internal reflection before emerging as brilliant white light and colorful fire. Our 360-degree hologram shows exactly how each facet contributes to this dazzling display.",
-                                                                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Rough_Diamond.jpg/960px-Rough_Diamond.jpg"),
+                                                                "Wonderful question! Diamonds have exceptional optical properties - they bend light more than almost any other material. When light enters a diamond, it bounces around inside due to total internal reflection before emerging as brilliant white light and colorful fire. Our 360-degree hologram shows exactly how each facet contributes to this dazzling display."),
                                                 new VideoQAItem("Why do diamonds have so many facets?",
                                                                 "Great observation! Each facet is precisely angled to maximize light performance. A round brilliant cut has 57 or 58 facets, each calculated to reflect light back to your eye rather than letting it escape. In our hologram, you can see how light travels through the crown, bounces off the pavilion facets, and returns as brilliance and fire."),
                                                 new VideoQAItem("How does the 360-degree view help us understand diamond quality?",
@@ -596,22 +577,20 @@ public class VideoData {
                                                 new VideoQAItem("Master, what's the difference between brilliance and fire in the hologram?",
                                                                 "Brilliant question! Brilliance is the white light that reflects back, while fire refers to the colorful flashes you see when light disperses into rainbow colors. Our hologram separates these effects so you can see how diamond cut affects both - well-cut diamonds maximize both brilliance and fire for stunning visual impact."),
                                                 new VideoQAItem("Can you see the diamond's crystal structure in the hologram?",
-                                                                "Indeed! Diamonds have a cubic crystal structure where each carbon atom bonds with four others in a tetrahedral arrangement. This creates the incredible hardness and optical properties we admire. Our hologram can zoom into the molecular level, showing how this perfect atomic lattice creates the foundation for diamond's unique characteristics.",
-                                                                "https://uploads.nationaljeweler.com/uploads/00b57de3d9717e59d266949f0ac4b5b1.jpg")))
+                                                                "Indeed! Diamonds have a cubic crystal structure where each carbon atom bonds with four others in a tetrahedral arrangement. This creates the incredible hardness and optical properties we admire. Our hologram can zoom into the molecular level, showing how this perfect atomic lattice creates the foundation for diamond's unique characteristics.")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // The Sun
                 i++;
-                title = "The Sun";
+                title = "Bitcoin, Blockchain, Cryptocurrency";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://cdn.hswstatic.com/gif/gettyimages-1406174121.jpg")
+                                .thumbnail("https://cdn.pixabay.com/video/2024/08/03/224712_tiny.jpg")
                                 .summary("Witness the magnificent power and beauty of our closest star in this awe-inspiring holographic display. Experience the Sun's roiling plasma surface, spectacular solar flares, and swirling magnetic fields in stunning 3D detail. This hologram brings you face-to-face with the nuclear furnace that powers our solar system, showcasing solar prominences, coronal mass ejections, and the intricate dance of charged particles that create our star's dynamic atmosphere.")
-                                .videoUrl("https://www.youtube.com/embed/e5DOApUtf7M?si=0v9Jg3ZKx7W8r6d2")
+                                .videoUrl("https://cdn.pixabay.com/video/2024/08/03/224712_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("sun", "Sun"),
@@ -619,8 +598,7 @@ public class VideoData {
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
                                                 new VideoQAItem("Master, what creates those beautiful flames we see on the Sun?",
-                                                                "Those are solar prominences and flares! They're created by the Sun's powerful magnetic fields twisting and snapping, launching plasma thousands of miles into space. The temperatures reach millions of degrees, making them glow brilliantly. Our hologram shows how these magnetic field lines can suddenly reconnect, releasing enormous energy in spectacular displays.",
-                                                                "https://www.chemistryviews.org/wp-content/uploads/2023/06/2023_ColorOfSun.png"),
+                                                                "Those are solar prominences and flares! They're created by the Sun's powerful magnetic fields twisting and snapping, launching plasma thousands of miles into space. The temperatures reach millions of degrees, making them glow brilliantly. Our hologram shows how these magnetic field lines can suddenly reconnect, releasing enormous energy in spectacular displays."),
                                                 new VideoQAItem("How hot is the Sun's surface in the hologram?",
                                                                 "The visible surface, called the photosphere, is about 5,500°C - hot enough to vaporize any known material instantly! But here's something amazing - the Sun's corona, its outer atmosphere that you can see in our hologram, is actually much hotter at over 1 million°C. Scientists are still trying to understand this temperature mystery!"),
                                                 new VideoQAItem("Why does the Sun's surface look like it's bubbling?",
@@ -629,22 +607,20 @@ public class VideoData {
                                                 new VideoQAItem("Master, how does the Sun make its energy?",
                                                                 "At the Sun's core, hydrogen atoms fuse together to create helium in a process called nuclear fusion. This releases tremendous energy that takes thousands of years to travel from the core to the surface! Every second, the Sun converts 4 million tons of matter into pure energy. Our hologram visualizes this incredible power source that has been shining for 4.6 billion years."),
                                                 new VideoQAItem("Can solar flares really affect Earth?",
-                                                                "Absolutely! Large solar flares and coronal mass ejections can disrupt satellites, power grids, and communication systems on Earth. They also create the beautiful auroras at the poles when charged particles interact with our magnetic field. Our hologram shows how these solar events travel through space - it's like the Sun sneezing, and we feel it 93 million miles away!",
-                                                                "https://www.thoughtco.com/thmb/Vo0-sNs3PfSnIHvXQJSzRTlVszY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/462977main_sun_layers_full-5a83345e875db90037f173c3.jpg")))
+                                                                "Absolutely! Large solar flares and coronal mass ejections can disrupt satellites, power grids, and communication systems on Earth. They also create the beautiful auroras at the poles when charged particles interact with our magnetic field. Our hologram shows how these solar events travel through space - it's like the Sun sneezing, and we feel it 93 million miles away!")))
                                 .relatedVideos(new ArrayList<>()) // Will be populated later
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Morphing Geometry
                 i++;
-                title = "Morphing Geometry";
+                title = "Earth, Digital, Globe";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://images.vexels.com/media/users/3/138498/isolated/preview/8131ff2f2f78353ba82992d636a6fafe-geometric-sacred-geometry.png")
+                                .thumbnail("https://cdn.pixabay.com/video/2020/01/11/31166-384523256_tiny.jpg")
                                 .summary("Enter the hypnotic world of morphing geometry where mathematical shapes transform, evolve, and dance in endless patterns. Watch as polygons seamlessly flow into circles, cubes unfold into complex polyhedra, and fractals grow in infinite recursive beauty. This mesmerizing holographic display showcases the fluid nature of geometric forms, revealing the hidden connections between mathematical concepts and the elegance of spatial transformations.")
-                                .videoUrl("https://www.youtube.com/embed/ZHqbpCCYiDM?si=2Vi4eklIW2KXCdu9")
+                                .videoUrl("https://cdn.pixabay.com/video/2020/01/11/31166-384523256_large.mp4")
                                 .category(categoryRepo.findById("science"))
                                 .tags(List.of(
                                                 buildTag("geometry", "Geometry"),
@@ -665,16 +641,15 @@ public class VideoData {
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
 
-                // Apollo 11 Moon Landing
                 i++;
-                title = "Apollo 11 Moon Landing";
+                title = "Robot, Artificial Intelligence, Science Fiction";
                 videos.add(VideoDetail.builder()
                                 .id(String.valueOf(videos.size() + i))
                                 .slug(generateSlugFromTitle(title))
                                 .title(title)
-                                .thumbnail("https://img.youtube.com/vi/5DZ6D70m0pU/hqdefault.jpg")
+                                .thumbnail("https://cdn.pixabay.com/video/2023/07/06/170277-842905544_tiny.jpg")
                                 .summary("Relive humanity's greatest adventure with this breathtaking holographic recreation of the Apollo 11 moon landing. Experience the tension of Eagle's descent, the historic first steps on lunar soil, and the groundbreaking scientific work conducted on the lunar surface. This immersive 3D hologram, created from NASA archives and cutting-edge visualization technology, allows viewers to witness this pivotal moment in human history from perspectives never before possible.")
-                                .videoUrl("https://www.youtube.com/embed/5DZ6D70m0pU?si=gAFKSnwRYGdYuFkT")
+                                .videoUrl("https://cdn.pixabay.com/video/2023/07/06/170277-842905544_large.mp4")
                                 .category(categoryRepo.findById("history"))
                                 .tags(List.of(
                                                 buildTag("space", "Space"),
@@ -683,18 +658,15 @@ public class VideoData {
                                 .likeCount(random.nextInt(1500))
                                 .qaContent(List.of(
                                                 new VideoQAItem("Master, how did they navigate to the Moon with such limited computer technology?",
-                                                                "Ingenious question! The Apollo Guidance Computer had just 64 kilobytes of memory and processing power thousands of times weaker than a modern smartphone! Yet it performed critical calculations while astronauts used sextants for celestial navigation - similar to ancient sailors but in space! The hologram shows how they constantly cross-checked computer data with manual calculations. Their navigational precision was remarkable - hitting a target 240,000 miles away with accuracy equivalent to firing a rifle from New York and hitting a coin in Los Angeles!",
-                                                                "https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTc0NTg1MTQ2NTY4MTQwMzAz/nasa-apollo-11-gettyimages-1156289624.jpg"),
+                                                                "Ingenious question! The Apollo Guidance Computer had just 64 kilobytes of memory and processing power thousands of times weaker than a modern smartphone! Yet it performed critical calculations while astronauts used sextants for celestial navigation - similar to ancient sailors but in space! The hologram shows how they constantly cross-checked computer data with manual calculations. Their navigational precision was remarkable - hitting a target 240,000 miles away with accuracy equivalent to firing a rifle from New York and hitting a coin in Los Angeles!"),
                                                 new VideoQAItem("Why was landing on the Moon so dangerous?",
                                                                 "The landing was the mission's most perilous phase! Notice in the hologram how the Lunar Module had to descend with limited fuel, no practice runs, and on terrain they'd only seen from orbit. When their computer overloaded and alarms sounded, Armstrong had to manually pilot to avoid a boulder field. They landed with just 25 seconds of fuel remaining! One mistake meant either crashing or being stranded forever, with no possibility of rescue - a level of risk almost unimaginable in today's space missions."),
                                                 new VideoQAItem("How did the astronauts survive such extreme temperatures on the Moon?",
-                                                                "Brilliant engineering! The hologram shows their multi-layered spacesuits which were technological marvels. The Moon experiences temperature swings from +250°F in sunlight to -250°F in shadow! The suits contained water cooling systems, reflective outer layers, and insulation. Most ingenious was the portable life support backpack - a miniature spacecraft providing oxygen, removing carbon dioxide, and maintaining pressure while being light enough for lunar gravity. It was essentially a spacecraft you could wear!",
-                                                                "https://www.nasa.gov/wp-content/uploads/2023/03/apollo11.jpg"),
+                                                                "Brilliant engineering! The hologram shows their multi-layered spacesuits which were technological marvels. The Moon experiences temperature swings from +250°F in sunlight to -250°F in shadow! The suits contained water cooling systems, reflective outer layers, and insulation. Most ingenious was the portable life support backpack - a miniature spacecraft providing oxygen, removing carbon dioxide, and maintaining pressure while being light enough for lunar gravity. It was essentially a spacecraft you could wear!"),
                                                 new VideoQAItem("Master, what scientific discoveries did they make during their brief time on the Moon?",
                                                                 "In just 21 hours on the surface, they revolutionized our understanding of cosmic history! The hologram shows their sample collection - they gathered 47.5 pounds of moon rocks ranging from 3.7 to 4.5 billion years old, older than 99.9% of Earth rocks which have been recycled through plate tectonics. These samples revealed the Moon likely formed from debris after a Mars-sized body collided with early Earth. They also deployed seismic instruments that detected thousands of moonquakes, helping map the lunar interior."),
                                                 new VideoQAItem("How did the Apollo missions change humanity's perspective?",
-                                                                "Profoundly! Beyond the technological triumph, Apollo gave us the 'Earthrise' and 'Blue Marble' photographs - the first complete views of our planet as a fragile oasis in space. The hologram shows this perspective that astronauts experienced: seeing Earth as a borderless, unified world. This cosmic viewpoint helped inspire the environmental movement and a new consciousness of Earth as a single, precious ecosystem. As astronaut Jim Lovell said: 'We went to the Moon as technicians; we returned as humanitarians.'",
-                                                                "https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/AS11-40-5903HR.jpg")))
+                                                                "Profoundly! Beyond the technological triumph, Apollo gave us the 'Earthrise' and 'Blue Marble' photographs - the first complete views of our planet as a fragile oasis in space. The hologram shows this perspective that astronauts experienced: seeing Earth as a borderless, unified world. This cosmic viewpoint helped inspire the environmental movement and a new consciousness of Earth as a single, precious ecosystem. As astronaut Jim Lovell said: 'We went to the Moon as technicians; we returned as humanitarians.'")))
                                 .relatedVideos(new ArrayList<>())
                                 .createdAt(getRandomCreationDate().toString())
                                 .build());
