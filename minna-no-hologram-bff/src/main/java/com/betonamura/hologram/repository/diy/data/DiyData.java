@@ -70,23 +70,28 @@ public class DiyData {
 
     // Real hologram videos from YouTube (all verified)
     private static final String DEFAULT_VIDEO_DIY_URL = "https://www.youtube.com/embed/Y60mfBvXCj8";
-    private static final List<String> HOLOGRAM_VIDEO_URLS = List.of(
-            "https://www.youtube.com/embed/Y60mfBvXCj8", // 3D Hologram Projector Tutorial
-            "https://www.youtube.com/embed/7YWTtCsvgvg", // DIY Hologram Pyramid
-            "https://www.youtube.com/embed/Y5p4JFt3o5o", // How to Make a Hologram Projector
-            "https://www.youtube.com/embed/0YiaOJbnRNI", // 3D Hologram DIY
-            "https://www.youtube.com/embed/vnrKMpgYa2Y", // Smart Hologram Effect
-            "https://www.youtube.com/embed/9t1xDnWIguo", // 3D Holographic Display
-            "https://www.youtube.com/embed/kObRDkxR1BI", // Hologram Maker Tutorial
-            "https://www.youtube.com/embed/JvrAFX213Wg", // Pyramid Hologram Display
-            "https://www.youtube.com/embed/qsLOhRJVGiM", // 3D Hologram Fan Display
-            "https://www.youtube.com/embed/CJ5Xtj83cYQ", // DIY Hologram for Mobile
-            "https://www.youtube.com/embed/XBkGs_LfeQU", // DIY 3D Hologram
-            "https://www.youtube.com/embed/vZ_YpjAd8cM", // Pyramid Hologram with Smartphone
-            "https://www.youtube.com/embed/Q3W1ChIzlZ0", // Hologram Technology Explained
-            "https://www.youtube.com/embed/eCXQMzLAgbs", // 3D Hologram Display Technology
-            "https://www.youtube.com/embed/NuIJiLd6xCk" // Advanced Hologram Technology
-    );
+    // private static final List<String> HOLOGRAM_VIDEO_URLS = List.of(
+    // "https://www.youtube.com/embed/Y60mfBvXCj8", // 3D Hologram Projector
+    // Tutorial
+    // "https://www.youtube.com/embed/7YWTtCsvgvg", // DIY Hologram Pyramid
+    // "https://www.youtube.com/embed/Y5p4JFt3o5o", // How to Make a Hologram
+    // Projector
+    // "https://www.youtube.com/embed/0YiaOJbnRNI", // 3D Hologram DIY
+    // "https://www.youtube.com/embed/vnrKMpgYa2Y", // Smart Hologram Effect
+    // "https://www.youtube.com/embed/9t1xDnWIguo", // 3D Holographic Display
+    // "https://www.youtube.com/embed/kObRDkxR1BI", // Hologram Maker Tutorial
+    // "https://www.youtube.com/embed/JvrAFX213Wg", // Pyramid Hologram Display
+    // "https://www.youtube.com/embed/qsLOhRJVGiM", // 3D Hologram Fan Display
+    // "https://www.youtube.com/embed/CJ5Xtj83cYQ", // DIY Hologram for Mobile
+    // "https://www.youtube.com/embed/XBkGs_LfeQU", // DIY 3D Hologram
+    // "https://www.youtube.com/embed/vZ_YpjAd8cM", // Pyramid Hologram with
+    // Smartphone
+    // "https://www.youtube.com/embed/Q3W1ChIzlZ0", // Hologram Technology Explained
+    // "https://www.youtube.com/embed/eCXQMzLAgbs", // 3D Hologram Display
+    // Technology
+    // "https://www.youtube.com/embed/NuIJiLd6xCk" // Advanced Hologram Technology
+    // );
+    private static final List<String> HOLOGRAM_VIDEO_URLS = new ArrayList<>();
 
     // Materials commonly used in hologram projector projects (grouped by
     // complexity)
@@ -111,28 +116,31 @@ public class DiyData {
             "Fan for cooling", "Mirror film (98% reflective)", "Adjustable phone mount");
 
     // DIY hologram projector titles - focused exclusively on building methods
+    // private static final List<String> DIY_PROJECTOR_TITLES = List.of(
+    // "Build a Smartphone Pyramid Hologram Projector",
+    // "Create a 4-sided Hologram Display with CD Cases",
+    // "Make a Large-scale Hologram Projector for Group Viewing",
+    // "Build an Arduino-Controlled Hologram Display with LEDs",
+    // "Create a Floating Image Hologram Projector",
+    // "Make a Multi-layer Hologram Display for 3D Effects",
+    // "Build a High-Definition Hologram Projector with Acrylic Sheets",
+    // "Create a Portable Hologram Viewer for Smartphones",
+    // "Make a Foldable Hologram Pyramid for Easy Storage",
+    // "Build a Dual-Layer Hologram Projector for Depth Effect",
+    // "Create a 360° Hologram Display with Rotating Base",
+    // "Make an Eco-Friendly Hologram Display from Recycled Materials",
+    // "Build a Smartphone-powered Double Pyramid Hologram Viewer",
+    // "Create a Multi-angle Hologram Display for All-Around Viewing",
+    // "Make a Motion-Activated Hologram Projector with Sensors",
+    // "Build a Travel-friendly Folding Hologram Kit with Case",
+    // "Create a Tabletop Hologram Theater for Home Entertainment",
+    // "Make a Mini Hologram Projector for Your Desk",
+    // "Build a Magnified Hologram Display with Enhanced Clarity",
+    // "Create a Hologram Box with Interchangeable Display Panels",
+    // "Make a Hologram Fan Display with Spinning Effect");
     private static final List<String> DIY_PROJECTOR_TITLES = List.of(
             "Build a Smartphone Pyramid Hologram Projector",
-            "Create a 4-sided Hologram Display with CD Cases",
-            "Make a Large-scale Hologram Projector for Group Viewing",
-            "Build an Arduino-Controlled Hologram Display with LEDs",
-            "Create a Floating Image Hologram Projector",
-            "Make a Multi-layer Hologram Display for 3D Effects",
-            "Build a High-Definition Hologram Projector with Acrylic Sheets",
-            "Create a Portable Hologram Viewer for Smartphones",
-            "Make a Foldable Hologram Pyramid for Easy Storage",
-            "Build a Dual-Layer Hologram Projector for Depth Effect",
-            "Create a 360° Hologram Display with Rotating Base",
-            "Make an Eco-Friendly Hologram Display from Recycled Materials",
-            "Build a Smartphone-powered Double Pyramid Hologram Viewer",
-            "Create a Multi-angle Hologram Display for All-Around Viewing",
-            "Make a Motion-Activated Hologram Projector with Sensors",
-            "Build a Travel-friendly Folding Hologram Kit with Case",
-            "Create a Tabletop Hologram Theater for Home Entertainment",
-            "Make a Mini Hologram Projector for Your Desk",
-            "Build a Magnified Hologram Display with Enhanced Clarity",
-            "Create a Hologram Box with Interchangeable Display Panels",
-            "Make a Hologram Fan Display with Spinning Effect");
+            "How to Create a 3D Hologram Video");
 
     /**
      * Create detailed records for all DIYs
@@ -192,7 +200,7 @@ public class DiyData {
                 .id(detail.getId())
                 .slug(detail.getSlug())
                 .title(detail.getTitle())
-                .thumbnail(findImageFromTags(detail.getTags()))
+                .thumbnail(detail.getThumbnailUrl())
                 .summary(detail.getSummary())
                 .stepCount(detail.getStepCount())
                 .estimatedTime(detail.getEstimatedTime())
@@ -240,6 +248,164 @@ public class DiyData {
      * @return List of hologram projector DIY details
      */
     private static List<DiyDetail> createHologramProjectorDiys() {
+        List<DiyDetail> diys = new ArrayList<>();
+
+        // 1. Build a Smartphone Pyramid Hologram Projector
+        diys.add(DiyDetail.builder()
+                .id("diy-100")
+                .slug(generateSlugFromTitle("Build a Smartphone Pyramid Hologram Projector"))
+                .title("Build a Smartphone Pyramid Hologram Projector")
+                .thumbnailUrl("https://cdn.pixabay.com/video/2022/04/25/115034-703067747_tiny.jpg")
+                .videoUrl("https://www.youtube.com/embed/Y60mfBvXCj8")
+                .summary(
+                        "Create a simple yet impressive hologram projector using your smartphone and transparent plastic. This pyramid-shaped projector uses the Pepper's Ghost illusion to make 3D images appear to float in mid-air. Perfect for beginners and a great way to demonstrate optical physics at home.")
+                .stepCount(7)
+                .estimatedTime("15-30 min")
+                .difficulty(DIFFICULTY_EASY)
+                .tags(List.of(
+                        buildTag(TAG_HOLOGRAM, "Hologram"),
+                        buildTag(TAG_DIY, "DIY"),
+                        buildTag(TYPE_PYRAMID, "Pyramid Hologram"),
+                        buildTag(TYPE_SMARTPHONE, "Smartphone Compatible"),
+                        buildTag(TAG_EDUCATIONAL, "Educational")))
+                .likeCount(350)
+                .materials(List.of(
+                        new Material("Clear plastic sheet (transparency film or CD case)", false),
+                        new Material("Scissors or craft knife", false),
+                        new Material("Ruler and pencil", false),
+                        new Material("Smartphone with bright screen", false),
+                        new Material("Clear tape", false),
+                        new Material("Template (printed or drawn)", false),
+                        new Material("Black construction paper (optional)", true)))
+                .steps(List.of(
+                        DIYStep.builder().stepNumber(1).title("Print or Draw the Template")
+                                .description(
+                                        "Draw or print a template with four identical trapezoids. Each trapezoid should have a small top edge (1-2cm) and a larger bottom edge (4-6cm depending on your phone size) with sides at 45° angles.")
+                                .imageUrl(
+                                        "https://content.instructables.com/F8R/7BRE/IJQNY1D4/F8R7BREIJQNY1D4.jpg?auto=webp&frame=1&width=600&height=1024&fit=bounds&md=a687f9f31691fff8dcfcaaa69f0a4a9c")
+                                .caption("Step 1: Creating the pyramid template")
+                                .build(),
+                        DIYStep.builder().stepNumber(2).title("Prepare Your Plastic Material")
+                                .description(
+                                        "Clean your transparent plastic sheet (transparency film or CD case plastic works well). Make sure it's free of scratches, fingerprints, and dust for the best optical clarity.")
+                                .imageUrl(
+                                        "https://content.instructables.com/FBR/EVJD/IJQNY1D0/FBREVJDIJQNY1D0.jpg?auto=webp&frame=1&width=603&fit=bounds&md=MjAxNi0wMS0yMyAwODoxMTowMi4w")
+                                .caption("Step 2: Preparing materials")
+                                .build(),
+                        DIYStep.builder().stepNumber(3).title("Cut Out the Template Pieces")
+                                .description(
+                                        "Carefully cut along the lines of your template to create four identical trapezoid pieces. Precision is important for a clean final result.")
+                                .imageUrl(
+                                        "https://content.instructables.com/FBJ/Y52F/IJQNY1D5/FBJY52FIJQNY1D5.jpg?auto=webp&frame=1&width=600&height=1024&fit=bounds&md=06bbfc5bf8d052017c423901e21111c4")
+                                .caption("Step 3: Cutting the transparent pieces")
+                                .build(),
+                        DIYStep.builder().stepNumber(4).title("Assemble the Pyramid")
+                                .description(
+                                        "Join the four trapezoid pieces along their edges with clear tape, forming a pyramid shape with the narrow edges at the top. Make sure all seams are secure but neat.")
+                                .imageUrl(
+                                        "https://content.instructables.com/FE0/ZZUD/IJQNY1DB/FE0ZZUDIJQNY1DB.jpg?auto=webp&frame=1&width=933&height=1024&fit=bounds&md=0087ff9dffbbe813be5b43873421ed67")
+                                .caption("Step 4: Assembling the pyramid structure")
+                                .build(),
+                        DIYStep.builder().stepNumber(5).title("Create a Base (Optional)")
+                                .description(
+                                        "For a more stable projector, cut a square hole in a piece of black construction paper or cardboard that matches your phone screen size. This helps position the pyramid and blocks excess light.")
+                                .imageUrl(
+                                        "https://content.instructables.com/FVJ/3GUO/IJQNY1DB/FVJ3GUOIJQNY1DB.jpg?auto=webp&frame=1&width=933&height=1024&fit=bounds&md=211c9711abb79d9104f2f37982f20250")
+                                .caption("Step 5: Creating an optional base")
+                                .build(),
+                        DIYStep.builder().stepNumber(6).title("Find Hologram Videos")
+                                .description(
+                                        "Search for 'pyramid hologram videos' online. These are specially formatted videos with four identical images arranged in a square on a black background, each rotated 90° from the next.")
+                                .imageUrl(
+                                        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop")
+                                .caption("Step 6: Finding hologram content")
+                                .build(),
+                        DIYStep.builder().stepNumber(7).title("Test Your Hologram Projector")
+                                .description(
+                                        "Place your pyramid on your smartphone with a hologram video playing. Turn off the lights and watch as the images appear to float in 3D inside your pyramid! Adjust position as needed for the best effect.")
+                                .imageUrl(
+                                        "https://www.androidcentral.com/sites/androidcentral.com/files/styles/large/public/article_images/2020/07/hologram-projector-hero.jpg")
+                                .caption("Step 7: Testing your hologram projection")
+                                .build()))
+                .relatedDIY(new ArrayList<>())
+                .createdAt(getRandomCreationDate())
+                .build());
+
+        // 2. How to Create a 3D Hologram Video
+        diys.add(DiyDetail.builder()
+                .id("diy-101")
+                .slug(generateSlugFromTitle("How to Create a 3D Hologram Video"))
+                .title("How to Create a 3D Hologram Video")
+                .thumbnailUrl("https://cdn.pixabay.com/video/2018/10/28/18976-298313087_tiny.jpg")
+                .videoUrl("https://www.youtube.com/embed/7YWTtCsvgvg")
+                .summary(
+                        "Learn how to create custom 3D hologram videos for pyramid projectors! This tutorial walks you through the entire video production process—from selecting content to formatting it correctly for the 4-sided reflection technique. Transform any image, logo, or animation into an impressive floating 3D hologram.")
+                .stepCount(6)
+                .estimatedTime("30-60 min")
+                .difficulty(DIFFICULTY_MEDIUM)
+                .tags(List.of(
+                        buildTag(TAG_HOLOGRAM, "Hologram"),
+                        buildTag(TAG_DIY, "DIY"),
+                        buildTag("video", "Video Creation"),
+                        buildTag("3d", "3D Effect"),
+                        buildTag(TAG_EDUCATIONAL, "Educational"),
+                        buildTag("digital", "Digital Content")))
+                .likeCount(220)
+                .materials(List.of(
+                        new Material("Video editing software (e.g., Adobe Premiere, CapCut, or iMovie)", false),
+                        new Material("Computer or smartphone with editing capabilities", false),
+                        new Material("Image or video content to convert", false),
+                        new Material("Black background template", false),
+                        new Material("Hologram projector to test your creation", true)))
+                .steps(List.of(
+                        DIYStep.builder().stepNumber(1).title("Choose Your Content")
+                                .description(
+                                        "Select or create content that will work well as a hologram. Objects on transparent backgrounds, 3D models, or animations with high contrast against black backgrounds work best. Keep it simple and visually striking.")
+                                .imageUrl(
+                                        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1974&auto=format&fit=crop")
+                                .caption("Step 1: Selecting appropriate content")
+                                .build(),
+                        DIYStep.builder().stepNumber(2).title("Prepare Your Editing Environment")
+                                .description(
+                                        "Open your video editing software and create a new project. Set up a square canvas (1080×1080px works well) with a completely black background. This shape and background are essential for proper hologram projection.")
+                                .imageUrl(
+                                        "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop")
+                                .caption("Step 2: Setting up the editing environment")
+                                .build(),
+                        DIYStep.builder().stepNumber(3).title("Create the 4-Quadrant Layout")
+                                .description(
+                                        "Divide your canvas into four equal quadrants. Place a copy of your content in each quadrant, rotating each copy 90° so they face outward from the center. This creates the illusion of a complete 3D object when reflected.")
+                                .imageUrl(
+                                        "https://content.instructables.com/FZQ/KZ1L/IJQNY1DF/FZQKZ1LIJQNY1DF.jpg?auto=webp&frame=1&width=933&height=1024&fit=bounds&md=6337f26e2f485838bf5b00ac44fb429f")
+                                .caption("Step 3: Creating the four-quadrant layout")
+                                .build(),
+                        DIYStep.builder().stepNumber(4).title("Position and Scale Content")
+                                .description(
+                                        "Position your content precisely in each quadrant, ensuring it's centered and properly aligned. Scale all elements identically across quadrants to maintain consistency. Leave space between quadrants for a cleaner hologram effect.")
+                                .imageUrl("https://praxent.com/wp-content/uploads/2020/09/what-is-a-hologram.jpg")
+                                .caption("Step 4: Positioning and scaling content")
+                                .build(),
+                        DIYStep.builder().stepNumber(5).title("Add Animation and Effects")
+                                .description(
+                                        "Enhance your hologram with subtle animations like rotation, pulsing, or particle effects. Keep movements slow and smooth. Add a slight glow effect to increase visibility and create a more futuristic appearance.")
+                                .imageUrl("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80")
+                                .caption("Step 5: Adding animation and effects")
+                                .build(),
+                        DIYStep.builder().stepNumber(6).title("Export and Test Your Hologram")
+                                .description(
+                                        "Export your video in high quality (1080p minimum). Test it on your pyramid projector, adjusting brightness, contrast, and positioning as needed. View in a darkened room for the best effect.")
+                                .imageUrl(
+                                        "https://www.androidcentral.com/sites/androidcentral.com/files/styles/large/public/article_images/2020/07/hologram-projector-hero.jpg")
+                                .caption("Step 6: Testing the final hologram video")
+                                .build()))
+                .relatedDIY(new ArrayList<>())
+                .createdAt(getRandomCreationDate())
+                .build());
+
+        return diys;
+    }
+
+    private static List<DiyDetail> createHologramProjectorDiys_bk() {
         List<DiyDetail> diys = new ArrayList<>();
 
         // Use our DIY projector titles list, or fallback to a default title if the list

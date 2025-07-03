@@ -13,6 +13,7 @@ public class DiyDetail {
     private String id;
     private String slug;
     private String title;
+    private String thumbnailUrl;
     private String videoUrl;
     private String summary;
     private Integer stepCount;
