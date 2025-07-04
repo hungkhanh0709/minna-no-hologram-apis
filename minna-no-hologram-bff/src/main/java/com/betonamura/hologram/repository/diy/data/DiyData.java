@@ -256,7 +256,7 @@ public class DiyData {
                 .slug(generateSlugFromTitle("Build a Smartphone Pyramid Hologram Projector"))
                 .title("Build a Smartphone Pyramid Hologram Projector")
                 .thumbnailUrl("https://cdn.pixabay.com/video/2022/04/25/115034-703067747_tiny.jpg")
-                .videoUrl("https://www.youtube.com/embed/Y60mfBvXCj8")
+                .videoUrl("https://cdn.pixabay.com/video/2022/04/25/115034-703067747_large.mp4")
                 .summary(
                         "Create a simple yet impressive hologram projector using your smartphone and transparent plastic. This pyramid-shaped projector uses the Pepper's Ghost illusion to make 3D images appear to float in mid-air. Perfect for beginners and a great way to demonstrate optical physics at home.")
                 .stepCount(7)
