@@ -69,7 +69,7 @@ public class DiyData {
     );
 
     // Real hologram videos from YouTube (all verified)
-    private static final String DEFAULT_VIDEO_DIY_URL = "https://www.youtube.com/embed/Y60mfBvXCj8";
+    private static final String DEFAULT_VIDEO_DIY_URL = "https://cdn.pixabay.com/video/2018/10/28/18976-298313087_large.mp4";
     // private static final List<String> HOLOGRAM_VIDEO_URLS = List.of(
     // "https://www.youtube.com/embed/Y60mfBvXCj8", // 3D Hologram Projector
     // Tutorial
@@ -246,6 +246,11 @@ public class DiyData {
      * Create hologram projector DIY records with step-by-step instructions
      * 
      * @return List of hologram projector DIY details
+     *         https://cdn.pixabay.com/video/2022/04/25/115034-703067747_tiny.jpg
+     *         https://cdn.pixabay.com/video/2022/04/25/115034-703067747_large.mp4
+     *         https://cdn.pixabay.com/video/2018/10/28/18976-298313087_tiny.jpg
+     *         https://cdn.pixabay.com/video/2018/10/28/18976-298313087_large.mp4
+     * 
      */
     private static List<DiyDetail> createHologramProjectorDiys() {
         List<DiyDetail> diys = new ArrayList<>();
