@@ -337,7 +337,7 @@ public class DiyData {
                 .slug(generateSlugFromTitle("How to Create a 3D Hologram Video"))
                 .title("How to Create a 3D Hologram Video")
                 .thumbnailUrl("https://cdn.pixabay.com/video/2018/10/28/18976-298313087_tiny.jpg")
-                .videoUrl("https://www.youtube.com/embed/7YWTtCsvgvg")
+                .videoUrl("https://cdn.pixabay.com/video/2018/10/28/18976-298313087_large.mp4")
                 .summary(
                         "Learn how to create custom 3D hologram videos for pyramid projectors! This tutorial walks you through the entire video production process—from selecting content to formatting it correctly for the 4-sided reflection technique. Transform any image, logo, or animation into an impressive floating 3D hologram.")
                 .stepCount(6)
